@@ -1,4 +1,4 @@
-# VNDishClassification — Người 1: data preprocessing
+# VNDishClassification
 
 Data preparation for a Vietnamese dish classification / text-to-image search project
 (103 dishes, Kaggle dataset [`meowluvmatcha/vnfood-30-100`](https://www.kaggle.com/datasets/meowluvmatcha/vnfood-30-100), CC BY-NC-SA 4.0).
