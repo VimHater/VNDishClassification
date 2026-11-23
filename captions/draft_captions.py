@@ -1,0 +1,577 @@
+"""Machine-written draft captions (author = claude-opus-5-5) and the script that filled them in.
+
+Usage (from project root):
+  python captions/draft_captions.py captions/captions_template.csv captions/captions_filled.csv captions/captions_ai_draft.json
+"""
+import csv, json, sys
+
+AUTHOR = 'claude-opus-5-5'
+# label: [short1, short2, long1, long2], each (text_vi, text_en)
+C = {
+'baba-nau-chuoi-dau': [
+ ('nồi om vàng nghệ với miếng thịt da sẫm', 'turmeric-yellow stew with dark-skinned meat pieces'),
+ ('miếng thịt dẹt có mai mềm trong nước vàng', 'flat pieces with soft shell in yellow broth'),
+ ('nồi lẩu nước vàng sánh, những miếng thịt to dẹt còn lớp da đen nhăn, kèm khúc quả xanh chát và tía tô', 'hotpot of thick yellow broth with large flat pieces still wearing wrinkled black skin, chunks of tart green fruit and perilla'),
+ ('món hầm màu nghệ trong niêu đất, miếng thịt lớn có da dày chứ không phải khúc tròn nhỏ, thêm tàu hũ rán và rau thơm', 'turmeric stew in a clay pot, big meat pieces with thick skin rather than small round segments, plus fried tofu and herbs')],
+'banh-bao': [
+ ('bánh trắng tròn mềm, mặt xếp nếp xoắn', 'soft round white bun with a twisted pleated top'),
+ ('vỏ trắng xốp bẻ đôi lộ nhân trứng thịt', 'fluffy white dough split to show egg and meat'),
+ ('mấy chiếc bánh hấp tròn trắng phau đặt trong xửng tre, mặt bánh căng mịn, có cái xếp nếp ở chóp', 'several plump pure-white steamed buns in a bamboo steamer, smooth taut tops, some pleated at the peak'),
+ ('chiếc bánh to cắt làm đôi, bên trong là thịt băm, nấm mèo, lạp xưởng và nửa quả trứng cút hoặc trứng muối', 'a large bun cut in half, filled with minced pork, wood ear, Chinese sausage and half a quail or salted egg')],
+'banh-beo': [
+ ('chén nhỏ bột trắng, rắc tôm chấy cam', 'small saucers of white batter topped with orange shrimp floss'),
+ ('nhiều chén sứ nhỏ, mặt có tóp mỡ', 'many little porcelain saucers topped with pork cracklings'),
+ ('cả mâm chén nhỏ xíu xếp sát nhau, mỗi chén một lớp bột gạo trắng đục phẳng, phủ tôm khô đỏ cam và mỡ hành', 'a tray of tiny saucers packed together, each holding a flat layer of opaque white rice batter topped with orange-red dried shrimp and scallion oil'),
+ ('bánh mỏng đổ ngay trong chén, màu trắng đục chứ không trong suốt, ăn bằng muỗng nhỏ chan nước mắm ngọt', 'thin cakes steamed right in the saucers, opaque white rather than translucent, eaten with a small spoon and sweet fish sauce')],
+'banh-bo': [
+ ('bánh xốp rỗ tổ ong, màu trắng ngà', 'spongy honeycomb-textured cake, ivory white'),
+ ('những chiếc bánh nhỏ xanh lá và hồng phồng xốp', 'small puffy green and pink cakes'),
+ ('miếng bánh cắt hình quạt, mặt láng, ruột đầy lỗ nhỏ li ti như tổ ong, màu trắng hoặc xanh lá dứa', 'a cake cut into wedges, glossy top, the inside full of tiny holes like honeycomb, white or pandan green'),
+ ('bánh hấp nở tròn trong khuôn chén, mặt nứt nhẹ, mềm xốp một khối chứ không xếp lớp, nhiều màu pastel', 'steamed cakes risen round in cup moulds, slightly cracked tops, soft and spongy in one piece rather than layered, in pastel colours')],
+'banh-bot-loc': [
+ ('viên bánh trong suốt dẻo thấy con tôm đỏ', 'chewy see-through dumpling with a red shrimp inside'),
+ ('gói lá chuối, vỏ trong, nhân tôm thịt', 'wrapped in banana leaf, clear skin, shrimp and pork filling'),
+ ('đĩa bánh nhỏ trong veo như thạch, nhìn xuyên thấy con tôm còn vỏ đỏ và miếng thịt ba chỉ, rưới mỡ hành xanh', 'a plate of small jelly-clear dumplings, a red shell-on shrimp and pork belly visible through them, with green scallion oil'),
+ ('những gói lá chuối nhỏ mở ra, bên trong là khối bánh dẻo trong suốt chứ không trắng đục, kèm chén nước mắm ớt', 'small banana-leaf parcels opened to show a chewy translucent cake, not opaque white, with chili fish sauce')],
+'banh-can': [
+ ('bánh tròn trắng đổ khuôn đất, có trứng', 'round white cakes from clay molds with egg'),
+ ('khuôn đất nung nhiều lỗ trên bếp than', 'a clay mold with many holes over charcoal'),
+ ('bánh tròn trắng mềm, mặt lõm có trứng cút hoặc mực, ăn chấm nước mắm với xoài xanh bào và mỡ hành', 'soft round white cakes with quail egg or squid in the hollow top, dipped in fish sauce with shredded green mango and scallion oil'),
+ ('bánh trắng nhạt đáy hơi vàng, dày và mềm chứ không giòn rụm, xếp úp hai cái vào nhau trên đĩa', 'pale white cakes slightly golden underneath, thick and soft rather than crunchy, stacked face to face in pairs')],
+'banh-canh': [
+ ('sợi to tròn trắng đục trong nước sánh', 'thick round opaque noodles in a thickened broth'),
+ ('tô sợi dày dai, chả cá và tôm', 'bowl of thick chewy noodles with fish cake and shrimp'),
+ ('tô nước dùng hơi sệt màu cam nhạt, sợi bột trắng to mập như đũa, có chả cá lát, tôm và hành ngò', 'bowl of slightly thick pale orange broth, fat white noodles as thick as chopsticks, sliced fish cake, shrimp and herbs'),
+ ('sợi to ngắn trắng đục, nước sánh đặc hơn nước trong của các loại phở, thêm giò heo hoặc ghẹ và hành phi', 'short thick opaque noodles, the broth more viscous than clear noodle soups, with pork hock or crab and fried shallots')],
+'banh-chung': [
+ ('bánh vuông gói lá xanh buộc lạt', 'square cake wrapped in green leaves tied with strings'),
+ ('miếng vuông nếp xanh, nhân vàng thịt mỡ', 'square slice of green sticky rice, yellow filling and fatty pork'),
+ ('khối bánh vuông vức gói lá dong xanh, buộc dây lạt chữ thập, cắt thành tam giác thấy lớp nếp ngả xanh', 'a perfectly square cake in green leaves, tied crosswise with bamboo strings, cut into triangles showing green-tinged rice'),
+ ('bánh hình hộp vuông chứ không phải đòn tròn dài, ruột có đậu xanh vàng và thịt ba chỉ, ăn kèm dưa hành', 'box-shaped square cake rather than a long log, with yellow mung bean and pork belly inside, served with pickled shallots')],
+'banh-cong': [
+ ('bánh chiên vàng hình cốc, con tôm trên', 'golden fried cup-shaped cakes topped with a shrimp'),
+ ('bánh chiên giòn tròn trụ, kèm rau sống', 'crisp fried cylindrical cakes with fresh greens'),
+ ('những chiếc bánh chiên hình trụ nhỏ như cái chén úp, vỏ vàng nâu giòn, trên mỗi cái có một con tôm đỏ nguyên vỏ', 'small fried cylinders shaped like upturned cups, crisp golden-brown shells, a whole red shrimp on each'),
+ ('bánh cắt đôi thấy ruột đậu xanh và thịt băm, bày cạnh rổ xà lách, cải bẹ xanh, rau thơm và nước mắm chua ngọt', 'a cake cut open showing mung bean and minced pork, next to lettuce, mustard greens, herbs and sweet-sour fish sauce')],
+'banh-cuon': [
+ ('lá bánh gạo mỏng trắng, rắc hành phi', 'thin white rice sheets with fried shallots'),
+ ('đĩa bánh mỏng mềm, chả lụa, nước chấm', 'plate of thin soft sheets, pork sausage and dipping sauce'),
+ ('những dải bánh gạo mỏng tang trong mờ được gấp lại, bên trong có thịt băm và mộc nhĩ, phủ hành phi vàng', 'strips of paper-thin translucent rice sheet folded around minced pork and wood ear, topped with golden fried shallots'),
+ ('đĩa bánh trắng mềm mỏng như lụa xếp lớp, ăn với chả quế nâu, rau thơm và chén nước mắm pha có lát ớt', 'a plate of soft silk-thin white sheets in layers, eaten with brown cinnamon pork roll, herbs and a bowl of dipping sauce with chili')],
+'banh-da-cua': [
+ ('tô sợi dẹt nâu đỏ, rau muống', 'bowl of flat reddish-brown noodles with water spinach'),
+ ('sợi gạo màu nâu, mảng gạch vàng nổi', 'brown rice noodles with golden roe floating'),
+ ('tô sợi bản to màu nâu đỏ, nước dùng có mảng gạch vàng nâu nổi, kèm chả lá lốt, giò và rau muống', 'bowl of wide reddish-brown noodles in broth with floating patches of golden-brown roe, betel leaf patties, pork roll and water spinach'),
+ ('sợi dẹt sẫm màu khác hẳn sợi trắng thường, ăn cùng tôm, chả chiên, đậu rán vàng và hành phi', 'dark flat noodles unlike ordinary white ones, with shrimp, fried fish cake, golden fried tofu and fried shallots')],
+'banh-da-lon': [
+ ('bánh nhiều lớp mỏng xanh vàng xen kẽ', 'cake of thin alternating green and yellow layers'),
+ ('bánh dẻo xanh lá dứa cắt lát sọc', 'chewy pandan-green cake sliced to show stripes'),
+ ('miếng bánh cắt ngang lộ rõ nhiều tầng mỏng đều nhau, xanh lá dứa xen vàng đậu, mặt bóng dẻo như thạch', 'a slice showing many even thin tiers, pandan green alternating with bean yellow, glossy and jelly-like'),
+ ('bánh đổ khuôn hình hoa hoặc trái tim, nhiều màu xếp tầng, dai dẻo chứ không xốp rỗ như bánh hấp nở', 'cake moulded as a flower or heart, multicoloured tiers, chewy rather than spongy like risen steamed cakes')],
+'banh-duc': [
+ ('miếng bột trắng mịn phủ thịt băm', 'smooth white slab topped with minced pork'),
+ ('bát bột nóng chan nước mắm, hành phi', 'bowl of warm rice paste with fish sauce and fried shallots'),
+ ('những miếng bánh trắng mềm mịn cắt vuông, không có lá gói, rưới sốt thịt băm mộc nhĩ, rau mùi và hành phi', 'square cuts of soft smooth white cake, no leaf wrapping, under minced pork and wood ear sauce, cilantro and fried shallots'),
+ ('bánh màu xanh nhạt hoặc trắng đục đặc quánh, xắn từng miếng ăn với tương hoặc nước mắm, đôi khi có lạc', 'dense pale green or opaque white cake cut into pieces and eaten with soy paste or fish sauce, sometimes with peanuts')],
+'banh-gai': [
+ ('bánh vuông vỏ nếp đen bóng, gói lá', 'square cake with glossy black rice skin in leaves'),
+ ('bánh đen bóng cắt đôi, nhân vàng', 'glossy black cake cut open, yellow filling'),
+ ('những chiếc bánh vuông gói lá chuối khô màu nâu, bóc ra lớp vỏ nếp đen nhánh, dẻo, rắc vừng trắng', 'square cakes in dry brown banana leaves, peeled to a glossy jet-black chewy rice skin sprinkled with white sesame'),
+ ('bánh cắt ngang thấy vỏ đen sẫm bao quanh nhân đậu xanh vàng, dừa sợi và miếng mỡ đường trong', 'cross-section with dark black skin around yellow mung bean, coconut shreds and translucent candied fat')],
+'banh-giay': [
+ ('bánh tròn dẹt trắng tinh kẹp giò', 'flat pure-white round cakes sandwiching pork roll'),
+ ('hai lớp nếp trắng dẻo, lát chả ở giữa', 'two layers of chewy white rice with a slice of pork roll between'),
+ ('chiếc bánh tròn dẹt trắng muốt, mặt mịn và hơi bóng, đặt trên miếng lá chuối, kẹp một lát giò lụa ở giữa', 'flat round snow-white cake, smooth slightly shiny surface, on a piece of banana leaf, with a slice of pork roll in the middle'),
+ ('những chiếc bánh nếp giã tròn như đồng xu lớn, không có nhân, xếp từng chồng trong túi hoặc trên mẹt', 'pounded sticky rice cakes round like big coins, no filling, stacked in bags or on a tray')],
+'banh-gio': [
+ ('bánh hình chóp gói lá chuối', 'pyramid-shaped cake wrapped in banana leaf'),
+ ('bánh trắng mềm hình tháp, bóc lá ra', 'soft white pyramid cake unwrapped from its leaf'),
+ ('chiếc bánh hình chóp bọc lá chuối xanh, bóc ra lớp bột trắng mềm nhão, bên trong có thịt băm, mộc nhĩ và trứng cút', 'pyramid cake in green banana leaf, opened to soft white paste, filled with minced pork, wood ear and quail egg'),
+ ('bánh trắng hình tam giác chóp nhọn để trên đĩa, ăn kèm tương ớt đỏ, xúc xích hoặc chả và dưa góp', 'white pointed pyramid cake on a plate, with red chili sauce, sausage or pork roll and pickles')],
+'banh-hoi': [
+ ('tấm sợi bún mảnh đan, phết mỡ hành', 'woven sheets of fine noodles brushed with scallion oil'),
+ ('miếng bún lá mỏng xanh hành, thịt quay', 'thin noodle mats speckled green, roast pork'),
+ ('những miếng nhỏ vuông làm từ sợi gạo cực mảnh đan chặt vào nhau, rưới mỡ hành xanh, ăn với heo quay da giòn', 'small squares of ultra-fine rice threads woven tight, drizzled with green scallion oil, eaten with crispy roast pork'),
+ ('mẹt lót lá chuối bày từng lớp sợi trắng mảnh như mạng nhện, kèm thịt nướng, rau sống và chén nước mắm', 'a leaf-lined tray with layers of white threads fine as a spider web, grilled meat, fresh greens and fish sauce')],
+'banh-khot': [
+ ('bánh nhỏ vàng giòn, con tôm giữa', 'small crispy golden cakes with a shrimp in the middle'),
+ ('khuôn gang lỗ nhỏ đầy bánh vàng', 'cast iron mold full of little golden cakes'),
+ ('những chiếc bánh tròn nhỏ chiên vàng giòn rụm, viền ngoài nâu, giữa có con tôm hồng và chút hành lá', 'small round cakes fried golden and crunchy with browned edges, a pink shrimp and some scallions in the middle'),
+ ('bánh vàng nghệ giòn chứ không trắng mềm, cuốn trong lá xà lách cùng rau thơm rồi chấm nước mắm đu đủ', 'turmeric-yellow crisp cakes rather than soft white ones, wrapped in lettuce with herbs and dipped in fish sauce with papaya')],
+'banh-la': [
+ ('bánh dẹt mỏng gói lá chuối xanh', 'flat thin cake wrapped in green banana leaf'),
+ ('lớp bột trắng mỏng dán trên lá', 'thin white batter layer stuck on a leaf'),
+ ('nhiều gói lá chuối dẹt hình chữ nhật xếp chồng, mở ra thấy lớp bột gạo trắng mỏng dính lá, chút tôm thịt hồng', 'stacked flat rectangular banana-leaf parcels, opened to a thin white rice layer clinging to the leaf, with a little pink shrimp and pork'),
+ ('bánh mỏng như tờ giấy nằm trong lá, ăn bằng cách cạo khỏi lá rồi chấm nước mắm ớt ngọt', 'paper-thin cake lying in a leaf, scraped off and dipped in sweet chili fish sauce')],
+'banh-mi': [
+ ('ổ vỏ giòn xẻ dọc, kẹp thịt và rau', 'crusty roll split open, filled with meat and greens'),
+ ('ổ bánh vàng giòn kẹp pa tê, đồ chua', 'golden crusty roll with pâté and pickles'),
+ ('ổ bánh dài vỏ vàng giòn rạch một bên, nhét thịt nguội, chả lụa, đồ chua cà rốt, dưa leo, ngò và ớt', 'long golden crusty roll slit on one side, stuffed with cold cuts, pork roll, pickled carrot, cucumber, cilantro and chili'),
+ ('cầm trên tay một ổ giòn gói giấy, phần ruột trắng xốp phết bơ và pa tê, thịt nướng và rau ló ra', 'a crusty roll in paper held in hand, airy white crumb spread with butter and pâté, grilled meat and greens poking out')],
+'banh-mi-chao': [
+ ('đĩa gang tròn có trứng, pa tê, xúc xích', 'round iron dish with egg, pâté and sausage'),
+ ('trứng ốp la, xíu mại sốt cà, ổ bánh', 'fried egg, meatballs in tomato sauce, a bread roll'),
+ ('đĩa gang tròn nóng bốc khói, trứng ốp la lòng đào, viên xíu mại sốt cà chua đỏ, xúc xích và pa tê, ổ bánh để riêng', 'smoking hot round iron pan, runny fried eggs, meatballs in red tomato sauce, sausage and pâté, bread roll on the side'),
+ ('bữa sáng bày trong đĩa sắt tròn chứ không phải hình con bò, nhiều xốt và pa tê, ít thịt bò miếng, kèm ổ giòn', 'breakfast in a round iron dish rather than a cow-shaped one, lots of sauce and pâté, little steak, with a crusty roll')],
+'banh-pia': [
+ ('bánh tròn dẹt vỏ nhiều lớp, dấu đỏ', 'flat round flaky pastry with a red stamp'),
+ ('vỏ trắng xốp bong lớp, nhân trứng muối', 'white flaky crust, salted egg yolk filling'),
+ ('chiếc bánh tròn dẹt màu trắng ngà, vỏ ngoài gồm nhiều lớp mỏng dễ bong, mặt đóng con dấu chữ đỏ', 'flat round ivory pastry, outer crust of many thin flaking layers, a red character stamp on top'),
+ ('bánh cắt đôi thấy nhân đậu xanh vàng hoặc sầu riêng, giữa là lòng đỏ trứng muối cam, thường đựng trong hộp giấy', 'pastry cut in half showing yellow mung bean or durian, an orange salted yolk in the centre, often sold in paper boxes')],
+'banh-tai-heo': [
+ ('bánh quy nhỏ giòn xoắn ốc hai màu', 'small crunchy two-tone spiral cookies'),
+ ('hũ bánh chiên xoắn vòng nâu trắng', 'a jar of fried brown-and-white swirl cookies'),
+ ('những miếng bánh mỏng nhỏ bằng đồng xu, chiên giòn, có vân xoắn ốc nâu và trắng như cuộn len', 'thin coin-sized fried crisps with a brown and white spiral swirl like a ball of yarn'),
+ ('rổ bánh vụn giòn nhiều màu xanh hồng tím, mỗi miếng cuộn tròn thành vòng xoáy, rắc mè', 'a basket of crunchy multicoloured green, pink and purple snacks, each rolled into a swirl, sprinkled with sesame')],
+'banh-tet': [
+ ('đòn bánh dài tròn gói lá chuối', 'long round log wrapped in banana leaves'),
+ ('khoanh nếp tròn, nhân vàng thịt ở giữa', 'round slice of sticky rice, yellow filling and pork in the centre'),
+ ('đòn bánh hình trụ dài như khúc cây, gói lá chuối buộc dây quanh thân, cắt thành từng khoanh tròn dày', 'long cylindrical log like a piece of wood, wrapped in banana leaf with strings around it, cut into thick round slices'),
+ ('lát bánh hình tròn chứ không vuông, vòng nếp trắng bao quanh đậu xanh vàng và miếng mỡ, có khi nếp tím', 'a round rather than square slice, a ring of white rice around yellow mung bean and fat, sometimes purple rice')],
+'banh-tieu': [
+ ('bánh chiên tròn dẹt rắc mè trắng', 'flat round fried bread sprinkled with white sesame'),
+ ('bánh phồng rỗng ruột màu vàng nâu', 'puffed hollow golden-brown bread'),
+ ('những chiếc bánh tròn chiên vàng nâu, phồng căng như quả bóng xẹp, mặt rắc đầy hạt mè, bên trong rỗng', 'round golden-brown fried breads puffed like half-deflated balls, covered in sesame seeds, hollow inside'),
+ ('bánh xé đôi thấy ruột rỗng mỏng, vỏ bóng dầu, bán trong túi ni lông ở xe đẩy ven đường', 'torn open to show a thin hollow inside, oily shiny crust, sold in plastic bags from street carts')],
+'banh-tom-ho-tay': [
+ ('bánh khoai lang sợi chiên giòn, có con tép đỏ', 'crispy fried sweet potato strands with a red prawn'),
+ ('miếng chiên vàng giòn, sợi khoai lang', 'golden crisp fritter of sweet potato strands'),
+ ('những miếng bánh tròn dẹt chiên vàng ruộm từ khoai lang thái sợi, mặt mỗi miếng có một con tép đỏ nguyên vỏ', 'flat round fritters fried deep gold from shredded sweet potato, a whole red shell-on prawn on each'),
+ ('đĩa bánh chiên giòn cắt miếng, ăn cuốn với xà lách, rau kinh giới và chấm nước mắm đu đủ xanh', 'plate of crispy fritters cut in pieces, eaten wrapped in lettuce and Vietnamese balm, dipped in fish sauce with green papaya')],
+'banh-trang-nuong': [
+ ('lá bánh mỏng giòn phủ trứng, hành lá', 'crisp thin wafer topped with egg and scallions'),
+ ('bánh tròn giòn trên bếp than, sốt cam', 'crispy disc over charcoal with orange sauce'),
+ ('một lá bánh gạo tròn mỏng đặt trên vỉ than hồng, phết trứng cút, hành lá, tép khô, xúc xích rồi rưới tương ớt', 'a thin round rice paper on a charcoal grill, spread with quail egg, scallions, dried shrimp, sausage and chili sauce'),
+ ('miếng bánh giòn gập đôi như bánh kẹp, cắt thành tam giác, mặt lấm tấm sốt mayonnaise và tương ớt', 'crispy sheet folded in half like a sandwich, cut into triangles, dotted with mayonnaise and chili sauce')],
+'banh-troi-nuoc': [
+ ('viên nếp tròn trong nước gừng nâu', 'round sticky rice balls in brown ginger syrup'),
+ ('chén viên trắng, nước cốt dừa, mè rang', 'bowl of white balls, coconut milk, toasted sesame'),
+ ('chén nhỏ có ba bốn viên bột nếp tròn to, chìm trong nước đường gừng màu nâu, rưới nước cốt dừa trắng và rắc mè', 'small bowl with three or four big round glutinous balls sunk in brown ginger syrup, white coconut milk and sesame on top'),
+ ('viên bánh cắn đôi thấy nhân đậu xanh vàng, vỏ dẻo trắng hoặc có màu lá dứa, ăn nóng có sợi gừng', 'a ball bitten open to show yellow mung bean, chewy white or pandan-coloured skin, eaten hot with ginger slivers')],
+'banh-trung-thu': [
+ ('bánh nướng vàng nâu in hoa văn nổi', 'golden-brown baked cake with raised pattern'),
+ ('bánh cắt tư, nhân thập cẩm, trứng muối', 'cake cut in quarters, mixed filling, salted egg'),
+ ('chiếc bánh vuông hoặc tròn dày, vỏ nướng màu nâu cánh gián bóng, mặt in hình hoa và chữ nổi rõ nét', 'thick square or round cake, glossy chestnut-brown baked crust, crisp raised flower and character pattern'),
+ ('bánh cắt miếng tam giác thấy nhân đặc với hạt sen, lạp xưởng và lòng đỏ trứng vàng cam, kèm ấm trà', 'cut into wedges showing dense filling with lotus seeds, Chinese sausage and an orange yolk, with a pot of tea')],
+'banh-u': [
+ ('bánh nhỏ hình chóp gói lá, buộc dây', 'small pyramid cake wrapped in leaves and tied'),
+ ('nếp trong màu hổ phách hình tam giác', 'translucent amber rice in a triangular shape'),
+ ('chùm bánh nhỏ hình kim tự tháp gói lá tre hoặc lá chuối, buộc thành xâu bằng dây, treo thành chùm', 'bunches of small pyramid cakes wrapped in bamboo or banana leaves, strung together and hung'),
+ ('bóc lá ra thấy khối nếp dẻo trong suốt màu vàng hổ phách, có khi nhân đậu đen, chấm mật ong', 'unwrapped to a chewy see-through amber block of rice, sometimes with black bean filling, dipped in honey')],
+'banh-xeo': [
+ ('bánh vàng mỏng giòn gập đôi, nhân giá', 'thin crispy yellow crepe folded over bean sprouts'),
+ ('chảo bánh vàng rộm, tôm thịt, rau sống', 'a pan of golden crepe, shrimp, pork, fresh greens'),
+ ('chiếc bánh lớn mỏng màu vàng nghệ viền giòn rụm, gấp làm đôi che nhân tôm, thịt ba chỉ và giá đỗ', 'large thin turmeric-yellow crepe with crunchy edges, folded over shrimp, pork belly and bean sprouts'),
+ ('cắt miếng bánh giòn cuốn trong lá cải, lá xà lách và rau thơm, chấm nước mắm chua ngọt có cà rốt', 'a piece of the crispy crepe wrapped in mustard leaf, lettuce and herbs, dipped in sweet-sour fish sauce with carrot')],
+'bo-kho': [
+ ('món hầm đỏ cam, thịt khối, cà rốt', 'red-orange stew with meat chunks and carrot'),
+ ('tô nước sệt đỏ, chấm ổ bánh giòn', 'bowl of thick red sauce for dipping a crusty roll'),
+ ('tô nước hầm màu đỏ cam có váng dầu điều, nhiều miếng thịt nạm gân vuông và cà rốt cắt khúc, rắc húng quế', 'bowl of red-orange stew with an annatto oil sheen, cubes of brisket and tendon, carrot chunks and Thai basil'),
+ ('nước sốt đặc thơm sả và hoa hồi, ăn cùng ổ giòn hoặc sợi hủ tiếu, kèm chén muối tiêu chanh', 'thick sauce fragrant with lemongrass and star anise, eaten with a crusty roll or noodles, with salt-pepper-lime')],
+'bo-la-lot': [
+ ('đĩa cuốn lá xanh sẫm, rắc đậu phộng', 'plate of dark green leaf rolls with peanuts'),
+ ('cuốn lá nhỏ xém cạnh, mỡ hành, bún', 'small charred leaf rolls, scallion oil, noodles'),
+ ('đĩa những cuộn nhỏ bằng ngón tay quấn lá xanh thẫm, áp chảo bóng dầu, phủ mỡ hành và đậu phộng rang giã', 'a plate of finger-sized rolls wrapped in dark green leaves, pan-fried and glossy, topped with scallion oil and crushed peanuts'),
+ ('các cuộn thịt băm gói lá thơm bày trên đĩa chứ không xiên que, ăn cùng bún, rau sống và mắm nêm', 'minced meat rolls in aromatic leaves served on a plate rather than skewered, with noodles, fresh greens and fermented anchovy sauce')],
+'bo-luc-lac': [
+ ('thịt cắt khối áp chảo, ớt chuông, hành tây', 'seared meat cubes with bell pepper and onion'),
+ ('khối thịt nâu bóng trên xà lách cà chua', 'glossy brown meat cubes on lettuce and tomato'),
+ ('đĩa thịt đỏ cắt hạt lựu vuông vức, xào lửa lớn cháy cạnh, trộn ớt chuông xanh đỏ và hành tây, bày trên xà lách', 'plate of neat diced red meat wok-seared with charred edges, tossed with green and red pepper and onion, on lettuce'),
+ ('những viên thịt vuông nâu bóng sốt, ăn với cơm đỏ hoặc khoai tây chiên, chấm muối tiêu chanh', 'square glossy sauced meat cubes eaten with red tomato rice or fries and salt-pepper-lime')],
+'bo-ne': [
+ ('đĩa gang hình con thú, thịt và trứng', 'animal-shaped iron plate with steak and egg'),
+ ('thịt áp chảo xèo xèo, trứng ốp la', 'sizzling seared steak with fried egg'),
+ ('đĩa gang đen hình bầu dục có tay cầm, miếng thịt mỏng chín tái, trứng ốp la, hành tây và pa tê, dầu còn bắn', 'black oval iron plate with a handle, thin medium-rare steak, fried egg, onion and pâté, oil still spitting'),
+ ('phần ăn sáng có miếng thịt đỏ là chính, không nhiều xíu mại sốt, đi kèm ổ giòn, dưa leo và cà chua', 'a breakfast centred on red steak rather than saucy meatballs, with a crusty roll, cucumber and tomato')],
+'bo-nuong-la-lot': [
+ ('xiên cuộn lá xanh trên vỉ than hồng', 'skewered green leaf rolls over red-hot coals'),
+ ('cuộn lá cháy xém, bánh tráng, rau sống', 'charred leaf rolls, rice paper, fresh greens'),
+ ('những cuộn nhỏ quấn lá xanh xiên que tre, xếp trên vỉ sắt trên bếp than, lá cháy xém đen ở mép', 'small leaf-wrapped rolls on bamboo skewers, laid on an iron grill over charcoal, leaves blackened at the edges'),
+ ('mâm cuốn ăn kèm có bánh tráng, bún, dưa leo, khế chua và nhiều rau, chấm mắm nêm, các cuộn lá còn trên que', 'a wrap-it-yourself spread with rice paper, noodles, cucumber, star fruit and many greens, anchovy dip, the leaf rolls still on sticks')],
+'bun-bo-hue': [
+ ('tô bún sợi to, nước đỏ dầu ớt', 'bowl of thick round noodles in red chili-oil broth'),
+ ('giò heo, chả cua, sả, váng đỏ', 'pork hock, crab cake, lemongrass, red oil slick'),
+ ('tô lớn sợi bún tròn mập trắng, nước dùng có lớp dầu sa tế đỏ cam nổi, miếng giò heo, thịt nạm và tảng huyết', 'big bowl of fat round white noodles, broth with a floating red-orange chili oil layer, pork hock, brisket and blood cake'),
+ ('nước dùng đỏ cay thơm mùi sả và mắm ruốc, ăn với rau muống bào, bắp chuối thái và chanh', 'spicy red broth smelling of lemongrass and shrimp paste, with shredded water spinach stems, banana blossom and lime')],
+'bun-cha': [
+ ('thịt nướng ngâm bát nước mắm, đu đủ', 'grilled pork soaked in a bowl of fish sauce with papaya'),
+ ('viên thịt nướng xém, bún trắng, rau', 'charred grilled meatballs, white noodles, greens'),
+ ('bát nước chấm màu hổ phách thả miếng thịt ba chỉ và viên thịt băm nướng than xém cạnh, lát đu đủ xanh nổi', 'amber dipping bowl with charcoal-charred pork belly slices and minced pork patties, green papaya slices floating'),
+ ('đĩa bún rối trắng, rổ rau xà lách tía tô kinh giới, chén tỏi ớt, gắp bún nhúng vào bát thịt nướng', 'plate of white noodle bundles, basket of lettuce, perilla and balm, garlic-chili, noodles dipped into the grilled pork bowl')],
+'bun-cha-ca': [
+ ('tô bún nước trong, miếng chiên vàng thái', 'noodle bowl in clear broth with sliced golden fried cakes'),
+ ('nước dùng đỏ nhạt cà chua, bún, thì là', 'light tomato-red broth, noodles, dill'),
+ ('tô bún sợi nhỏ nước dùng trong ngả đỏ cà chua, phía trên xếp lát viên chiên vàng nâu dai và miếng hấp trắng', 'bowl of thin noodles in clear tomato-tinted broth topped with slices of chewy golden-brown fried patty and white steamed pieces'),
+ ('nước dùng ngọt thanh có khoanh cà chua, rau cần, hành lá, thêm ớt tươi và chanh, miếng quết chiên màu vàng', 'light sweet broth with tomato rounds, water celery, scallions, fresh chili and lime, golden fried fish-paste pieces')],
+'bun-dau-mam-tom': [
+ ('mẹt bún lá, tàu hũ chiên vàng, chả cốm', 'tray of pressed noodles, golden fried tofu, green rice patties'),
+ ('chén nước chấm tím sủi bọt, vắt chanh', 'a bowl of frothy purple dip with lime squeezed'),
+ ('mẹt tre lót lá chuối bày bún ép cắt miếng vuông, những khối tàu hũ chiên vàng giòn, thịt luộc thái mỏng và lòng rán', 'bamboo tray lined with banana leaf, pressed noodle squares, crispy golden tofu cubes, thinly sliced boiled pork and fried intestine'),
+ ('chén nước chấm màu tím xám đánh sủi bọt với chanh ớt, bên cạnh rổ kinh giới, tía tô và dưa chuột', 'a bowl of purplish-grey dip whipped frothy with lime and chili, beside balm, perilla and cucumber')],
+'bun-mam': [
+ ('tô bún nước nâu đục, cà tím', 'noodle bowl in murky brown broth with eggplant'),
+ ('nước dùng sẫm, tôm, mực, heo quay', 'dark broth with shrimp, squid, roast pork'),
+ ('tô bún nước dùng màu nâu xám đục, nồng mùi cá lên men, có tôm, mực khoanh, heo quay da giòn và cà tím mềm', 'noodle bowl in murky grey-brown broth smelling of fermented fish, with shrimp, squid rings, crispy roast pork and soft eggplant'),
+ ('nước dùng sậm màu chứ không đỏ cà chua, ăn với đĩa rau sống thật nhiều gồm bông điên điển, rau muống và giá', 'dark broth rather than tomato red, eaten with a big plate of greens including sesbania flowers, water spinach and sprouts')],
+'bun-rieu': [
+ ('tô bún nước đỏ, gạch cua bông xốp', 'noodle bowl in red broth with fluffy crab paste'),
+ ('nước cà chua, đậu rán, huyết, sợi nhỏ', 'tomato broth, fried tofu, blood cubes, thin noodles'),
+ ('tô bún sợi nhỏ trong nước dùng đỏ cam từ cà chua, nổi những mảng cua xay vàng nâu bông xốp, khoanh cà chua và đậu phụ', 'thin noodles in tomato-orange broth with floating fluffy golden-brown clumps of ground crab, tomato rounds and tofu'),
+ ('nước dùng chua nhẹ màu cà chua chứ không có dầu ớt sa tế, thêm huyết, giò, chả và rổ rau sống, chén mắm tôm', 'mildly sour tomato-coloured broth without chili oil, with blood cake, pork roll, greens and shrimp paste')],
+'bun-thit-nuong': [
+ ('tô bún khô, thịt xém than, chả giò', 'dry noodle bowl, charcoal-charred pork, fried spring rolls'),
+ ('bún trộn rau, đậu phộng, nước mắm', 'noodles with greens, peanuts and fish sauce'),
+ ('tô bún trắng không có nước dùng, phủ thịt heo ướp sả xém cạnh, chả giò chiên cắt khúc, rau thơm và đồ chua', 'white noodles without broth, topped with charred lemongrass pork, cut fried spring rolls, herbs and pickles'),
+ ('rưới nước mắm chua ngọt vào tô rồi trộn đều, mặt rắc đậu phộng giã và mỡ hành, dưới đáy có xà lách giá', 'sweet-sour fish sauce poured in and tossed, crushed peanuts and scallion oil on top, lettuce and sprouts underneath')],
+'ca-kho-to': [
+ ('khoanh thịt dày trong niêu đất, nước sánh nâu', 'thick steaks in a clay pot with thick brown sauce'),
+ ('nồi đất nhỏ nước màu cánh gián, tiêu', 'small clay pot of caramel-coloured sauce with pepper'),
+ ('niêu đất nhỏ chứa những khoanh thịt trắng dày còn da và xương giữa, ngấm nước đường thắng nâu sẫm, rắc tiêu và ớt', 'small clay pot of thick white steaks with skin and centre bone, soaked in dark caramel sauce, pepper and chili'),
+ ('nồi đất đen bóng nước sệt sánh, váng mỡ vàng, ăn với cơm trắng và canh chua, có hành lá cắt khúc', 'glossy dark clay pot of thick sauce with golden fat, eaten with white rice and sour soup, cut scallions')],
+'ca-loc-nuong': [
+ ('nguyên con thân dài cháy đen trong rơm', 'a whole long fish blackened in burning straw'),
+ ('con xiên que, da xém, bánh tráng', 'skewered whole fish, charred skin, rice paper'),
+ ('nguyên con dài cắm que tre dựng đứng trên đống rơm cháy, lớp da cháy đen bong ra thấy thịt trắng bên trong', 'a whole long fish on a bamboo stick standing upright in burning straw, blackened skin peeling to white flesh'),
+ ('con dài nằm trên lá chuối, bên cạnh bánh tráng, bún, rau sống, dưa leo và chén mắm nêm để cuốn', 'the long whole fish on banana leaf next to rice paper, noodles, greens, cucumber and anchovy dip for wrapping')],
+'ca-muoi-xoi': [
+ ('quả tròn nhỏ trắng ngâm nước, ớt tỏi', 'small round white fruits soaked with chili and garlic'),
+ ('hũ quả trắng xanh nhạt bổ đôi giòn', 'jar of crunchy halved pale green fruits'),
+ ('bát đầy những quả tròn nhỏ cỡ ngón cái, vỏ trắng ngà hoặc xanh nhạt, ngâm trong nước trong có lát tỏi và ớt đỏ', 'a bowl of thumb-sized round fruits, ivory or pale green skins, in clear brine with garlic slices and red chili'),
+ ('những quả nhỏ bổ đôi thấy ruột trắng lốm đốm hạt, xếp trong hũ thủy tinh, ăn giòn kèm mắm tôm', 'small fruits halved to show white flesh dotted with seeds, packed in a glass jar, eaten crunchy with shrimp paste')],
+'ca-ri-ga': [
+ ('món hầm vàng béo, khoai, miếng thịt', 'creamy yellow stew with potato and meat pieces'),
+ ('nước cốt dừa vàng cam, ổ bánh chấm', 'yellow-orange coconut sauce with a roll for dipping'),
+ ('nồi nước sốt vàng cam sánh béo nước cốt dừa, có đùi cánh chặt miếng còn da, khoai lang và khoai tây cắt khối', 'pot of creamy yellow-orange coconut sauce with skin-on chopped drumsticks and wings, sweet potato and potato cubes'),
+ ('tô nước vàng có váng dầu, thơm sả và bột nghệ, ăn kèm bún hoặc ổ giòn, đĩa muối tiêu chanh và rau quế', 'yellow sauce with an oily sheen, smelling of lemongrass and turmeric, with noodles or a crusty roll, salt-pepper-lime and basil')],
+'ca-sot-ca-chua': [
+ ('miếng chiên phủ nước đỏ sánh, hành lá', 'fried pieces under thick red sauce with scallions'),
+ ('khúc thịt trắng chiên vàng trong nước đỏ', 'golden fried white-flesh chunks in red sauce'),
+ ('đĩa những khúc thân tròn chiên vàng còn da, ngập trong nước đỏ tươi sánh đặc nấu từ quả chín, rắc hành lá', 'plate of round skin-on chunks fried golden, swimming in a thick bright red sauce cooked from ripe fruit, with scallions'),
+ ('món mặn gia đình màu đỏ cam, thấy rõ xương sống giữa miếng, ăn với cơm trắng, có ngò và tiêu', 'a red-orange home-style dish, backbone visible in the middle of each piece, eaten with white rice, cilantro and pepper')],
+'canh-bi-do': [
+ ('bát nước trong có miếng màu cam', 'bowl of clear soup with orange chunks'),
+ ('miếng củ cam mềm, thịt băm, hành', 'soft orange chunks, minced pork, scallions'),
+ ('bát nước dùng trong ngọt có những miếng quả màu cam vàng cắt khối mềm nhừ, lẫn thịt băm hoặc tôm và hành lá', 'bowl of sweet clear broth with soft cubes of orange-yellow squash, minced pork or shrimp and scallions'),
+ ('nồi nước loãng ngả vàng vì miếng quả cam tan ra, vỏ xanh còn dính, rắc ngò gai, ăn chan cơm', 'thin broth turned yellowish from dissolving orange squash, green skin still attached, sawtooth herb, poured over rice')],
+'canh-chua': [
+ ('nước đỏ nhạt, dứa, đậu bắp, giá đỗ', 'light red broth with pineapple, okra and bean sprouts'),
+ ('nồi canh có cá, bạc hà, giá', 'soup pot with fish, elephant ear stems, sprouts'),
+ ('tô nước trong ngả đỏ, có khúc cá, miếng dứa vàng, đậu bắp cắt lát, giá đỗ, cọng bạc hà xốp và ngò om', 'clear reddish broth with fish chunks, yellow pineapple, sliced okra, bean sprouts, spongy elephant ear stems and rice-paddy herb'),
+ ('nước dùng màu cam nhạt lấm tấm ngò om và tỏi phi vàng, có vị me, thường ăn chung với cá kho', 'pale orange broth flecked with rice-paddy herb and golden fried garlic, tangy with tamarind, often with braised fish')],
+'canh-cua': [
+ ('nước xanh nhạt, lá xanh, mảng gạch nâu', 'pale green broth with greens and brown crab-paste clumps'),
+ ('bát lá xanh nhớt, mướp, khối nâu nổi', 'bowl of slippery greens, loofah, floating brown clumps'),
+ ('bát nước xanh nhạt sánh nhớt với nhiều lá xanh đậm thái nhỏ, phía trên nổi những tảng gạch nâu vàng bông xốp', 'bowl of slightly viscous pale green soup with lots of chopped dark leaves, fluffy golden-brown clumps floating on top'),
+ ('món nước mát ăn kèm cà pháo, nồi có lát mướp xanh và mảng thịt xay vàng nâu đóng thành bánh', 'a cooling soup eaten with pickled eggplant, with green loofah slices and golden-brown cakes of ground crab')],
+'canh-khoai-tim': [
+ ('nồi nước sánh màu tím rực, tôm', 'pot of thick vivid purple soup with shrimp'),
+ ('bát tím đậm lấm tấm lá xanh', 'deep purple bowl dotted with green herbs'),
+ ('bát nước sệt tím đậm như màu hoa cà, củ nghiền nhuyễn còn vài miếng, lẫn tôm hồng và thịt băm, rắc ngò om', 'bowl of thick deep purple soup like lilac, mashed root with a few chunks left, pink shrimp and minced pork, rice-paddy herb'),
+ ('món nước màu tím lạ mắt, sánh như cháo, nổi lá rau thơm xanh và hành phi, ăn với cơm', 'a striking purple soup, thick like porridge, green herbs and fried shallots on top, eaten with rice')],
+'canh-kho-hoa': [
+ ('khúc quả xanh sần, ruột thịt băm', 'bumpy green gourd sections with minced pork inside'),
+ ('bát nước trong, khoanh xanh nhạt có nhân', 'clear soup with pale green stuffed rings'),
+ ('bát nước trong có những khúc quả xanh nhạt vỏ sần sùi gân dọc, khoét ruột rồi nhét đầy thịt băm và mộc nhĩ', 'clear soup with pale green gourd sections with ridged bumpy skin, hollowed and packed with minced pork and wood ear'),
+ ('nồi nước dùng ngả xanh, thả mấy khoanh tròn xanh có lõi hồng nâu, rắc hành ngò và tiêu', 'greenish broth with a few green rounds with pinkish-brown centres, scallions, cilantro and pepper')],
+'cao-lau': [
+ ('sợi vàng nâu dày dai, xá xíu, ít nước', 'thick chewy yellow-brown noodles, char siu, little sauce'),
+ ('mì dày vuông cạnh, bánh giòn vụn, rau', 'thick square-edged noodles, crunchy crackers, greens'),
+ ('bát sợi mì dày vuông cạnh màu vàng nâu, phủ lát thịt xá xíu đỏ, miếng da heo chiên giòn phồng và chút nước sốt', 'bowl of thick square-edged yellow-brown noodles with red char siu slices, puffed crispy pork skin and a little sauce'),
+ ('sợi dai màu nâu nhạt chứ không vàng nghệ bản dẹt, nằm trên lớp giá và rau sống, gần như không có nước', 'chewy light-brown noodles, not flat turmeric-yellow ones, on bean sprouts and greens, almost no broth')],
+'cha-ca-la-vong': [
+ ('miếng vàng nghệ chiên với thì là', 'turmeric-yellow pieces fried with dill'),
+ ('chảo dầu xèo xèo, thì là, hành', 'sizzling oil pan with dill and scallions'),
+ ('chảo nhỏ trên bếp than đầy dầu sôi, những miếng thịt trắng tẩm nghệ vàng chiên cùng bó thì là và hành lá xanh', 'small pan of bubbling oil on a charcoal stove, turmeric-coated white pieces fried with bunches of dill and scallions'),
+ ('ăn kèm bún trắng, lạc rang, rau mùi và bát mắm tôm pha chanh, miếng nghệ vàng nằm trên lớp rau xanh héo', 'with white noodles, roasted peanuts, cilantro and shrimp paste with lime, the yellow turmeric pieces on wilted greens')],
+'cha-com': [
+ ('miếng thịt chiên áo hạt gạo xanh', 'fried meat patties coated in green rice flakes'),
+ ('viên dẹt vàng nâu lốm đốm xanh', 'flat golden-brown patties speckled green'),
+ ('những miếng thịt dẹt hình bầu dục chiên vàng nâu, bề mặt bám đầy hạt gạo non xanh lục, đặt trên lá chuối', 'flat oval meat patties fried golden-brown, covered with green young rice grains, on banana leaf'),
+ ('cắt đôi thấy ruột thịt giã hồng nhạt lẫn hạt xanh, ăn với bún và chấm tương ớt', 'cut open to show pale pink pounded meat mixed with green grains, eaten with noodles and chili sauce')],
+'cha-lui': [
+ ('thịt băm quấn que sả nướng than', 'minced pork wrapped on lemongrass sticks, grilled'),
+ ('que thịt nâu xém, bánh tráng, rau', 'browned meat sticks, rice paper, greens'),
+ ('những que sả hoặc que tre có thịt băm ép dẹt bao quanh, nướng xém vàng nâu, thịt trơn nhẵn không thành viên tròn', 'lemongrass or bamboo sticks with minced pork pressed flat around them, grilled golden-brown, smooth rather than round sausage links'),
+ ('rút thịt khỏi que, cuốn với bánh tráng, rau sống, dưa leo rồi chấm tương đậu phộng nâu sánh', 'meat slid off the stick, wrapped with rice paper, greens and cucumber, dipped in thick brown peanut sauce')],
+'chao-long': [
+ ('tô cháo trắng, ruột heo, gan, huyết', 'bowl of white congee with pork intestine, liver, blood cake'),
+ ('cháo sánh, dồi lát, quẩy chiên', 'thick congee, sliced sausage, fried dough'),
+ ('tô cháo trắng ngà sánh mịn, đĩa bên cạnh bày ruột non, gan, tim, dồi và những khối huyết đỏ sẫm thái lát', 'bowl of smooth ivory congee, a side plate of small intestine, liver, heart, sausage and sliced dark red blood cake'),
+ ('cháo rắc hành lá, tiêu và hành phi, ăn với quẩy vàng giòn và rau giá, chấm nước mắm gừng', 'congee with scallions, pepper and fried shallots, eaten with crisp golden dough sticks, greens and ginger fish sauce')],
+'chao-vit': [
+ ('nồi lẩu nước cam béo, khoai môn', 'hotpot of rich orange broth with taro'),
+ ('thịt chặt miếng da vàng trong nước đỏ', 'chopped skin-on poultry in red-orange sauce'),
+ ('nồi lẩu nước màu cam đỏ sánh béo, nhiều miếng thịt gia cầm chặt còn lớp da dày, khoai môn bở và hành lá', 'hotpot of thick creamy orange-red broth with chopped thick-skinned poultry, crumbly taro and scallions'),
+ ('nước dùng béo màu hồng cam đặc trưng, nhúng rau muống và cải, ăn với bún, chấm chén nước màu hồng', 'rich pinkish-orange broth, water spinach and greens dipped in, eaten with noodles and a pink dipping sauce')],
+'com-chay-cha-bong': [
+ ('miếng gạo giòn vàng phủ thịt sợi', 'crispy golden rice crackers topped with meat floss'),
+ ('tấm cơm giòn, thịt xé tơi, mỡ hành', 'crispy rice sheet, fluffy shredded meat, scallion oil'),
+ ('những tấm gạo nén chiên vàng giòn hình vuông, mặt phủ lớp thịt khô xé tơi xốp màu nâu vàng, mỡ hành và ớt', 'square sheets of pressed rice fried golden and crisp, topped with fluffy golden-brown shredded dried meat, scallion oil and chili'),
+ ('miếng giòn bẻ ra kêu rôm rốp, thường đựng trong túi hoặc hộp nhựa, lớp sợi thịt nâu phủ dày bên trên', 'crunchy pieces that snap when broken, often in bags or plastic boxes, a thick layer of brown meat floss on top')],
+'com-chien': [
+ ('đĩa cơm rang vàng, trứng, đậu Hà Lan', 'plate of golden fried rice with egg and peas'),
+ ('cơm tơi hạt, cà rốt, lạp xưởng', 'separate grains with carrot and Chinese sausage'),
+ ('đĩa cơm hạt tơi rời vàng óng vì trứng, lẫn cà rốt thái hạt lựu, đậu Hà Lan xanh, lạp xưởng và hành lá', 'plate of loose rice turned golden with egg, mixed with diced carrot, green peas, Chinese sausage and scallions'),
+ ('cơm đảo chảo lửa lớn có tôm nõn hồng hoặc thịt, đóng khuôn tròn trên đĩa, kèm dưa leo và cà chua', 'rice tossed over high heat with pink shrimp or meat, moulded into a dome, with cucumber and tomato')],
+'com-ga-xoi-mo': [
+ ('đùi chiên giòn vàng, cơm màu cam', 'crispy golden fried leg with orange rice'),
+ ('miếng thịt da giòn rụm, cơm đỏ', 'crackling-skinned meat with red rice'),
+ ('nguyên chiếc đùi chiên da vàng ruộm giòn tan bóng dầu, đặt cạnh đĩa cơm chiên màu đỏ cam hạt tơi', 'a whole leg fried with shiny golden crackling skin next to a plate of loose orange-red fried rice'),
+ ('phần cơm có miếng thịt gia cầm chiên giòn chặt miếng, dưa leo, cà chua, đồ chua và chén nước mắm tỏi ớt', 'rice plate with chopped crispy fried poultry, cucumber, tomato, pickles and garlic-chili fish sauce')],
+'com-lam': [
+ ('ống tre nướng cháy đen, nếp bên trong', 'charred black bamboo tube with sticky rice inside'),
+ ('thỏi nếp trắng bọc màng tre mỏng', 'white sticky rice log in a thin bamboo skin'),
+ ('những ống tre dài vỏ ngoài cháy đen, chẻ ra thấy khối nếp trắng dẻo hình trụ bọc lớp màng tre mỏng vàng', 'long bamboo tubes charred black outside, split open to a cylinder of white sticky rice in a thin yellow bamboo skin'),
+ ('thỏi nếp cắt khoanh tròn chấm muối vừng, nướng trên bếp lửa ven đường, có ống còn bốc khói', 'rice log cut into rounds and dipped in sesame salt, roasted over a roadside fire, some tubes still smoking')],
+'com-rang-dua-bo': [
+ ('cơm vàng phủ thịt xào, cải chua', 'golden rice under stir-fried beef and pickled greens'),
+ ('đĩa cơm, cải muối vàng, thịt thái', 'rice with yellow pickled mustard greens and sliced meat'),
+ ('đĩa cơm chiên vàng tơi, phía trên phủ thịt đỏ thái mỏng xào cùng cải bẹ muối chua vàng xanh, cà chua và hành tây', 'plate of loose golden fried rice under thin red meat slices stir-fried with yellow-green pickled mustard greens, tomato and onion'),
+ ('cơm đảo với trứng, lớp trên là lá cải ngâm chua thái khúc bóng dầu, thêm lát cà chua và nước tương ớt', 'rice tossed with egg, topped with glossy cut pickled mustard leaves, plus tomato slices and chili soy sauce')],
+'com-tam': [
+ ('cơm hạt vỡ nhỏ, sườn nướng, bì', 'broken-grain rice with grilled pork chop and shredded skin'),
+ ('đĩa cơm, chả trứng hấp, trứng ốp la', 'rice plate with steamed egg loaf and fried egg'),
+ ('đĩa cơm hạt nhỏ vụn trắng, miếng sườn cốt lết nướng than nâu bóng, bì heo thái sợi, chả trứng hấp vàng và đồ chua', 'plate of small broken white rice grains, glossy charcoal-grilled pork chop, shredded pork skin, yellow steamed egg loaf and pickles'),
+ ('cơm rưới mỡ hành xanh, có trứng ốp la lòng đỏ, dưa leo, cà chua và chén nước mắm ngọt pha loãng', 'rice drizzled with green scallion oil, a sunny-side-up egg, cucumber, tomato and thin sweet fish sauce')],
+'cua-hap-bia': [
+ ('những con đỏ cam có càng to, cây sả', 'bright orange-red creatures with big claws, lemongrass'),
+ ('mai đỏ bóc ra, gạch vàng, muối tiêu', 'red shell lifted off, yellow roe, salt and pepper'),
+ ('đĩa lớn mấy con có mai và càng to màu đỏ cam rực sau khi chín, xếp trên lớp sả đập dập, bốc hơi nóng', 'big plate of a few creatures with shells and large claws turned bright orange-red when cooked, on crushed lemongrass, steaming'),
+ ('mai được lật ra thấy gạch vàng cam, càng đập vỡ lộ thịt trắng, chấm chén muối tiêu chanh xanh', 'shell flipped to show orange roe, claws cracked to reveal white meat, dipped in green salt-pepper-lime')],
+'cut-lon-xao-me': [
+ ('trứng nhỏ bóc vỏ áo nước nâu bóng', 'small peeled eggs coated in glossy brown sauce'),
+ ('đĩa trứng chua ngọt, đậu phộng, rau răm', 'plate of sweet-sour eggs, peanuts, Vietnamese coriander'),
+ ('đĩa những quả trứng nhỏ cỡ đầu ngón tay đã bóc vỏ, lăn trong nước sốt chua ngọt nâu cam sánh, rắc đậu phộng', 'plate of fingertip-sized peeled eggs rolled in thick sweet-sour orange-brown sauce, sprinkled with peanuts'),
+ ('món ăn vặt đựng trong chén nhỏ, trứng có phôi sẫm màu bên trong, kèm rau răm xanh và hành phi', 'a street snack in small cups, the eggs with a dark embryo inside, with green Vietnamese coriander and fried shallots')],
+'ga-chien-nuoc-mam': [
+ ('cánh rán áo sốt nâu vàng bóng', 'fried wings in glossy golden-brown glaze'),
+ ('cánh giòn, tỏi phi, ớt đỏ', 'crispy wings, fried garlic, red chili'),
+ ('đĩa cánh rán giòn phủ lớp sốt keo sánh màu nâu hổ phách bóng loáng, rắc tỏi phi vàng và lát ớt đỏ', 'plate of crispy fried wings under a sticky shiny amber-brown glaze, golden fried garlic and red chili slices'),
+ ('những miếng cánh và đùi nhỏ rán da căng giòn, áo đều nước sốt mặn ngọt, ăn kèm dưa leo và cơm trắng', 'wings and small drumsticks fried taut and crisp, evenly coated in a salty-sweet sauce, with cucumber and white rice')],
+'ga-hap-la-chanh': [
+ ('thịt da vàng nhạt, lá xanh thái chỉ', 'pale yellow-skinned meat with thread-cut green leaves'),
+ ('đĩa thịt luộc vàng, muối tiêu, lá thơm', 'plate of yellow poached meat, salt-pepper, fragrant leaves'),
+ ('đĩa thịt gia cầm chặt miếng da vàng óng mỏng, phía trên rắc đầy sợi lá xanh đậm thái nhỏ như sợi chỉ', 'plate of chopped poultry with thin golden skin, covered with dark green leaves cut thread-fine'),
+ ('con nguyên da vàng bóng, thịt trắng mềm, bày trên lá, kèm chén muối tiêu và quả xanh vắt', 'a whole bird with glossy yellow skin, soft white meat, on leaves, with salt-pepper and a green citrus to squeeze')],
+'goi-ca-chich': [
+ ('lát thịt sống da bạc trộn hành tây', 'slices of raw silver-skinned flesh mixed with onion'),
+ ('đĩa trộn dừa nạo, rau, đậu phộng', 'salad plate with coconut shreds, herbs, peanuts'),
+ ('những miếng phi lê nhỏ dài còn sống, da bạc ánh xanh, trộn hành tây, dừa nạo trắng, rau răm và đậu phộng rang', 'small long fillets, raw, with blue-silver skin, tossed with onion, white coconut shreds, Vietnamese coriander and roasted peanuts'),
+ ('món trộn hải sản sống ăn bằng cách cuốn bánh tráng cùng rau rừng, chấm nước đậu phộng sánh nâu', 'a raw seafood salad eaten wrapped in rice paper with wild greens, dipped in thick brown peanut sauce')],
+'goi-cuon': [
+ ('bánh tráng trong suốt bọc tôm hồng', 'clear rice paper around pink shrimp'),
+ ('cuộn tươi chấm tương đậu phộng nâu', 'fresh rolls with brown peanut dip'),
+ ('những cuộn bánh tráng mềm trong suốt, nhìn xuyên thấy con tôm hồng bổ đôi, xà lách xanh, bún trắng và thịt luộc', 'soft translucent rice paper rolls showing halved pink shrimp, green lettuce, white noodles and boiled pork'),
+ ('đĩa cuộn không chiên, đầu cuộn ló cọng hẹ xanh, chấm chén tương đen có đậu phộng giã và ớt', 'plate of unfried rolls with green chive stems poking out, dipped in dark hoisin with crushed peanuts and chili')],
+'hu-tieu': [
+ ('sợi nhỏ trong dai, nước trong, tôm', 'thin clear chewy noodles, clear broth, shrimp'),
+ ('tô sợi trong, thịt băm, trứng cút', 'bowl of clear noodles, minced pork, quail egg'),
+ ('tô sợi nhỏ trong và dai, nước dùng xương trong vắt, có tôm, gan, thịt băm, trứng cút, hẹ và tỏi phi', 'bowl of thin clear chewy noodles in crystal-clear bone broth with shrimp, liver, minced pork, quail egg, chives and fried garlic'),
+ ('sợi mảnh hơn và dai hơn sợi dẹt trắng mềm, có khi ăn khô với chén nước dùng riêng, kèm giá và cần tây', 'noodles thinner and chewier than soft flat white ones, sometimes served dry with broth on the side, with sprouts and celery')],
+'khau-nhuc': [
+ ('lát ba chỉ bì nâu bóng, khoai môn', 'pork belly slices with glossy brown skin and taro'),
+ ('bát thịt úp ngược, nước sốt sẫm', 'bowl of meat turned upside down, dark sauce'),
+ ('những lát thịt ba chỉ dày xếp lớp xen kẽ khoai môn, bì nâu sẫm nhăn bóng, úp ngược bát cho lớp bì lên trên', 'thick pork belly slices layered with taro, dark wrinkled glossy skin, bowl turned over so the skin faces up'),
+ ('món hấp mềm rục màu nâu đỏ, mỡ trong suốt, nước sốt ngũ vị sánh đọng quanh đĩa, ăn với cơm', 'a melt-soft steamed reddish-brown dish, translucent fat, thick five-spice sauce pooled around, eaten with rice')],
+'kho-muc-nuong': [
+ ('con dẹt phơi nắng xé sợi, tương ớt', 'flat dried seafood torn into strips with chili sauce'),
+ ('vỉ than, con dẹt cong lại, xém vàng', 'charcoal grill, flat creature curling up, toasted golden'),
+ ('những con mỏng dẹt phơi nắng màu trắng ngà có râu, đặt trên vỉ than hồng cho cong lại và xém vàng', 'thin flat dried ivory creatures with tentacles on a red-hot charcoal grill, curling up and browning'),
+ ('đĩa sợi trắng vàng dai được xé tơi bằng tay, chấm tương ớt đỏ hoặc mayonnaise, ăn kèm cốc bia', 'plate of chewy white-yellow strips torn by hand, dipped in red chili sauce or mayonnaise, with a glass of beer')],
+'kho-quet': [
+ ('nồi đất nước sệt nâu, tóp mỡ', 'clay pot of thick brown sauce with cracklings'),
+ ('rau củ luộc quanh chén nước chấm sánh', 'boiled vegetables around a thick dipping sauce'),
+ ('chiếc nồi đất nhỏ đựng nước sốt đen sánh như mật, lấm tấm tóp mỡ giòn, tép khô và tiêu xay', 'small clay pot of syrup-thick black sauce dotted with crispy cracklings, dried shrimp and ground pepper'),
+ ('mẹt rau luộc gồm đậu bắp, cà rốt, bắp cải, đậu que bày quanh, chấm vào chén sốt mặn ngọt đậm', 'tray of boiled okra, carrot, cabbage and green beans arranged around, dipped into the bold salty-sweet sauce')],
+'lap-xuong': [
+ ('khúc dồi đỏ sẫm bóng, thái xéo', 'glossy dark red sausages sliced diagonally'),
+ ('xúc xích khô đỏ trong túi nhựa', 'dried red sausages in a plastic pack'),
+ ('những khúc xúc xích khô nhỏ màu đỏ sẫm bóng mỡ, lốm đốm hạt mỡ trắng, buộc dây thành từng cặp', 'small dried sausages, glossy dark red, speckled with white fat, tied in pairs with string'),
+ ('khúc xúc xích chiên hoặc nướng căng bóng, cắt lát xéo hình bầu dục, bày cạnh dưa leo và tương ớt', 'sausages fried or grilled until taut and shiny, cut into oval diagonal slices, with cucumber and chili sauce')],
+'luon-om-chuoi-dau': [
+ ('khúc thân tròn nhỏ da sẫm trong nước nghệ', 'small round dark-skinned segments in turmeric broth'),
+ ('nồi vàng nghệ, khúc thịt tròn, tía tô', 'yellow turmeric pot, round meat segments, perilla'),
+ ('món hầm vàng sánh trong nồi đất, có nhiều khúc thân tròn ngắn da nâu đen, miếng quả xanh và tàu hũ chiên', 'thick yellow stew in a clay pot with many short round dark-brown segments, green fruit pieces and fried tofu'),
+ ('nước dùng màu nghệ lấm tấm rau tía tô, thịt cắt khúc nhỏ tròn như ngón tay chứ không phải miếng dẹt có mai', 'turmeric broth flecked with perilla, the meat cut into small finger-like round pieces rather than flat shelled pieces')],
+'luon-xao-xa-ot': [
+ ('khúc thân tròn da sẫm đảo khô, rau răm', 'round dark-skinned segments dry-tossed with Vietnamese coriander'),
+ ('đĩa miếng nâu đen bóng, cay thơm', 'plate of glossy brown-black pieces, spicy and fragrant'),
+ ('đĩa những khúc thân tròn dài nhỏ da nâu đen bóng nhớt, đảo khô trên lửa lớn với lá chanh và lát quả cay đỏ', 'plate of small long round segments with slick glossy dark brown skin, tossed dry over high heat with lime leaves and red hot chili slices'),
+ ('món nhậu sẫm màu cuộn tròn, thịt trắng dai, rắc rau răm xanh và đậu phộng, ăn với bánh đa giòn', 'a dark curled drinking snack with chewy white meat, Vietnamese coriander and peanuts, eaten with crispy rice crackers')],
+'mam-chung': [
+ ('bát hấp mặt vàng cam lòng đỏ', 'steamed bowl with an orange-yellow yolk top'),
+ ('khối hấp nâu, trứng vịt, rau sống', 'brown steamed custard, duck egg, fresh vegetables'),
+ ('chén hấp đặc màu nâu xám bên dưới, phía trên phủ lớp lòng đỏ trứng vàng cam óng và lát ớt đỏ', 'a steamed bowl dense grey-brown underneath, topped with a glossy orange yolk layer and red chili slices'),
+ ('món hấp đậm mùi lên men có thịt băm và miến, ăn cùng dưa leo, cà tím luộc, rau sống và cơm', 'a pungent fermented steamed dish with minced pork and glass noodles, eaten with cucumber, boiled eggplant, greens and rice')],
+'mam-tep-chung-thit': [
+ ('hỗn hợp thịt băm nâu đỏ tơi, ớt', 'crumbly reddish-brown minced meat with chili'),
+ ('hũ thủy tinh đựng thịt xào đỏ nâu', 'glass jar of reddish-brown fried meat'),
+ ('bát đầy thịt băm xào khô với con giáp xác li ti, màu nâu đỏ tơi rời, lẫn tỏi, sả băm và ớt', 'bowl of dry-fried minced meat with tiny crustaceans, crumbly reddish-brown, with garlic, minced lemongrass and chili'),
+ ('những hũ nhựa nắp đỏ xếp hàng chứa món mặn đỏ cam lổn nhổn, ăn kèm cơm trắng hoặc rau luộc', 'rows of red-lidded jars of a lumpy red-orange savoury mix, eaten with white rice or boiled vegetables')],
+'mi-quang': [
+ ('sợi dẹt vàng nghệ, ít nước, bánh tráng mè', 'flat turmeric-yellow noodles, little broth, sesame cracker'),
+ ('tô mì vàng, tôm thịt, trứng cút, đậu phộng', 'bowl of yellow noodles, shrimp, pork, quail egg, peanuts'),
+ ('tô sợi bản to dẹt màu vàng nghệ, chan xăm xắp nước dùng đỏ cam, có tôm, thịt heo, trứng cút và đậu phộng rang', 'bowl of wide flat turmeric-yellow noodles in just a little orange-red broth, with shrimp, pork, quail eggs and roasted peanuts'),
+ ('sợi vàng bản dẹt mềm chứ không phải sợi nâu dày dai, kèm miếng bánh tráng nướng mè bẻ vụn và rau sống', 'soft flat yellow noodles rather than thick chewy brown ones, with a broken toasted sesame rice cracker and fresh greens')],
+'mi-xao-gion': [
+ ('ổ mì chiên vàng phủ hải sản sốt', 'golden fried noodle nest topped with seafood in sauce'),
+ ('sợi chiên rụm, rau cải, tôm mực', 'crunchy fried noodles, greens, shrimp and squid'),
+ ('đĩa sợi mì chiên phồng vàng rộm thành ổ tròn, bên trên rưới hỗn hợp tôm, mực, thịt bò, cải ngọt và cà rốt sốt sánh', 'plate of noodles fried puffy golden into a round nest, topped with shrimp, squid, beef, bok choy and carrot in thick sauce'),
+ ('lớp mì vàng cứng bên dưới thấm dần nước sốt bóng, phía trên có súp lơ, nấm và hành tây', 'a crisp yellow noodle base slowly soaking up glossy sauce, topped with cauliflower, mushrooms and onion')],
+'muc-nhoi-thit': [
+ ('ống hải sản trắng đầy thịt bên trong', 'white seafood tubes packed with meat'),
+ ('khoanh tròn cắt lát lộ nhân thịt miến', 'round slices revealing a pork and glass noodle filling'),
+ ('những con thân ống trắng hồng còn râu, bên trong căng đầy thịt băm, miến và mộc nhĩ, chiên vàng hoặc hấp chín', 'tube-bodied creatures, pinkish white with tentacles, packed full of minced pork, glass noodles and wood ear, fried or steamed'),
+ ('cắt thành từng khoanh dày như bánh xe, viền trắng bao lõi nhân nâu, xếp đĩa với rau và tương ớt', 'cut into thick wheel-like rounds, white rims around a brown filling, plated with greens and chili sauce')],
+'nam-pia': [
+ ('nồi nước sệt xanh nâu, nội tạng', 'pot of thick greenish-brown soup with offal'),
+ ('bát nước đục màu rêu, rau thơm', 'bowl of murky moss-coloured broth with herbs'),
+ ('nồi lớn sôi lục bục món nước sền sệt màu xanh rêu đục, nhiều miếng lòng, dạ dày và thịt cắt miếng, lá thơm rừng', 'big bubbling pot of thick murky moss-green soup with lots of offal, stomach and meat pieces, wild aromatic leaves'),
+ ('bát canh đặc màu xanh xám nhìn lạ, nổi sả, ớt và mấy lá rau, đặc sản vùng núi ăn với rượu', 'an unusual-looking thick grey-green soup with lemongrass, chili and leaves, a mountain specialty eaten with rice wine')],
+'nem-chua': [
+ ('miếng thịt hồng gói lá, tỏi ớt', 'pink meat pieces wrapped in leaves with garlic and chili'),
+ ('khối hồng nhỏ bọc ni lông đỏ', 'small pink blocks in red plastic wrap'),
+ ('những khối thịt nhỏ màu hồng tươi cắt vuông, điểm lát tỏi trắng, ớt đỏ và lá đinh lăng, gói lá chuối bên ngoài', 'small square blocks of bright pink meat dotted with white garlic, red chili and polyscias leaf, wrapped in banana leaf'),
+ ('chùm gói nhỏ bọc nhựa đỏ treo thành xâu, mở ra thấy thịt lên men hồng dẻo có sợi bì trắng', 'bundles of small red-plastic packs hung in strings, opened to springy pink fermented meat with white pork skin shreds')],
+'nem-nuong-nha-trang': [
+ ('xiên thịt viên dài hồng nâu, ram giòn', 'skewers of long pinkish-brown sausages, crispy rolls'),
+ ('khúc thịt tròn trên vỉ, nước chấm cam', 'round meat links on a grill, orange dipping sauce'),
+ ('những khúc thịt viên dài tròn trịa xiên que, áp than xém hồng nâu, ăn cùng cuốn bánh tráng chiên giòn và rau sống', 'plump round sausage links on skewers, charred pinkish-brown over coals, eaten with crispy fried rice paper rolls and greens'),
+ ('khay cuốn tự làm có thịt viên tròn bóng mỡ chứ không ép dẹt quanh que sả, kèm chuối chát, khế và chén sốt cam sánh', 'a DIY wrap tray with glossy round sausages rather than meat pressed flat around lemongrass, with green banana, star fruit and thick orange sauce')],
+'nui-xao': [
+ ('ống pasta ngắn đảo chảo với thịt, rau', 'short tube pasta tossed with meat and vegetables'),
+ ('mì ống ngắn, cà chua, hành tây, cải', 'short macaroni with tomato, onion, greens'),
+ ('đĩa những ống bột ngắn rỗng ruột màu vàng nhạt, trộn thịt bò thái mỏng, cà chua, hành tây và rau cải xanh', 'plate of short hollow pale-yellow pasta tubes tossed with thin beef slices, tomato, onion and green vegetables'),
+ ('món đảo chảo kiểu Âu có ống bột nhỏ thấm sốt cà đỏ, có khi kèm trứng ốp la và khoai tây', 'a Western-style stir-fry of small pasta tubes soaked in red tomato sauce, sometimes with a fried egg and potatoes')],
+'oc-buou-hap': [
+ ('vỏ xoắn to đen xanh, lá gừng', 'big black-green spiral shells with ginger leaves'),
+ ('mâm vỏ tròn to bốc hơi, nước chấm', 'tray of large round shells steaming, dipping sauce'),
+ ('rổ những con vỏ xoắn tròn to bằng nắm tay màu đen ánh xanh, nhét lá gừng xanh vào miệng vỏ, bốc khói nóng', 'basket of fist-sized round spiral shells, black with a green sheen, green ginger leaves stuffed in the openings, steaming hot'),
+ ('dùng tăm lể thịt nâu xám ra khỏi vỏ tròn đen, chấm chén nước mắm gừng hoặc muối tiêu chanh', 'greyish-brown meat picked out of the round black shells with a toothpick, dipped in ginger fish sauce or salt-pepper-lime')],
+'oc-huong-xao': [
+ ('vỏ nhỏ trắng kem đốm nâu, sốt vàng', 'small cream shells with brown spots in yellow sauce'),
+ ('con vỏ đốm áo trứng muối vàng óng', 'spotted shells coated in golden salted egg'),
+ ('đĩa những con vỏ tròn bầu nhỏ màu trắng kem có đốm nâu như da báo, đảo trong sốt bơ tỏi hoặc trứng muối vàng', 'plate of small plump cream shells with leopard-like brown spots, tossed in garlic butter or golden salted-egg sauce'),
+ ('vỏ ngắn tròn có hoa văn chứ không dài nhọn, rắc rau răm và ớt, thường ăn kèm bia trên phố', 'short round patterned shells rather than long pointed ones, with Vietnamese coriander and chili, a street beer snack')],
+'oc-len-xao-dua': [
+ ('vỏ dài nhọn xoắn trong nước béo trắng', 'long pointed spiral shells in creamy white sauce'),
+ ('nồi vỏ dài đen, sả, rau răm', 'pot of long dark shells with lemongrass and Vietnamese coriander'),
+ ('nồi đầy những con vỏ dài thon nhọn như mũi khoan màu nâu đen, ngập trong nước cốt béo trắng đục có sả và ớt', 'a pot full of long tapering drill-bit-like dark brown shells immersed in creamy opaque white sauce with lemongrass and chili'),
+ ('vỏ dài đã cắt đuôi để hút, khác loại vỏ tròn có đốm, nước sốt sánh ngọt béo rắc rau răm xanh', 'long shells with tips cut off for sucking, unlike the round spotted kind, in a sweet creamy sauce with green herbs')],
+'pho': [
+ ('bánh dẹt trắng mềm, nước dùng trong, thịt tái', 'soft flat white noodles, clear broth, rare beef'),
+ ('tô nước nâu nhạt, hành tây, quẩy', 'bowl of light brown broth, onion, fried dough'),
+ ('tô sợi gạo dẹt trắng mềm ngập nước dùng trong màu nâu nhạt, phủ thịt thái mỏng còn hồng, hành tây trắng và hành lá', 'bowl of soft flat white rice noodles in clear light brown broth, topped with thin pink-rare meat, white onion and scallions'),
+ ('nước dùng trong không có dầu đỏ, thơm quế hồi, kèm đĩa giá, húng quế, chanh và chén tương đen tương đỏ', 'clear broth with no red oil, smelling of cinnamon and star anise, with sprouts, basil, lime and hoisin and chili sauces')],
+'rau-muong-xao': [
+ ('đĩa cọng xanh bóng dầu, đảo lửa lớn', 'plate of glossy green stems stir-fried on high heat'),
+ ('thân rỗng dài xanh mướt và lá', 'long hollow bright green stems and leaves'),
+ ('đĩa những cọng dài rỗng ruột xanh mướt cùng lá nhọn, đảo nhanh trên chảo nóng với dầu, lấm tấm hạt vàng phi thơm', 'plate of long hollow bright green stems with pointed leaves, quickly tossed in a hot oiled pan, dotted with fragrant golden fried bits'),
+ ('món xanh đơn giản ăn với cơm, cọng giòn cắt khúc còn bóng, đôi khi thêm lát ớt đỏ', 'a simple green side dish with rice, crisp cut stems still glossy, sometimes with red chili slices')],
+'sup-cua': [
+ ('chén nước sánh trong, sợi trứng, thịt xé', 'cup of clear thick broth with egg ribbons and shredded meat'),
+ ('bát sệt có trứng cút, bắp, nấm', 'thick bowl with quail egg, corn, mushroom'),
+ ('chén nước sánh trong như thạch loãng, có sợi trứng vàng trắng, thịt giáp xác xé sợi, trứng cút, bắp hạt và nấm tuyết', 'a cup of clear jelly-like thick broth with yellow-white egg ribbons, shredded crustacean meat, quail egg, corn kernels and snow fungus'),
+ ('món nước sệt ăn bằng muỗng, rắc ngò, tiêu và hành phi, có khi thêm óc heo, quẩy cắt nhỏ', 'a thick spoon soup sprinkled with cilantro, pepper and fried shallots, sometimes with pork brain and chopped dough sticks')],
+'tau-hu-nhoi-thit': [
+ ('miếng vuông chiên vàng kẹp thịt, nước đỏ', 'golden fried squares with meat, red sauce'),
+ ('khối trắng chiên giữa có thịt băm, hành', 'fried white blocks with minced meat in the middle, scallions'),
+ ('những khối vuông mềm màu trắng được rán vàng bên ngoài, khoét giữa nhét thịt băm, ngập trong sốt cà chua đỏ', 'soft white squares fried golden outside, hollowed and stuffed with minced pork, swimming in red tomato sauce'),
+ ('đĩa món mặn gia đình đỏ cam, mỗi miếng có lớp vỏ vàng xốp và lõi thịt hồng, rắc hành lá và tiêu', 'a red-orange home-style dish, each piece with a spongy golden skin and pink meat core, scallions and pepper on top')],
+'tau-hu-non': [
+ ('muỗng khối trắng mềm mịn trong nước gừng', 'spoonfuls of silky white curd in ginger syrup'),
+ ('chén trắng mịn, trân châu, nước cốt dừa', 'bowl of smooth white curd, tapioca pearls, coconut milk'),
+ ('chén những lát mỏng trắng ngà mềm run rẩy như thạch, chan nước gừng ngọt màu nâu nhạt, có sợi gừng vàng', 'bowl of thin ivory slices wobbling like jelly, in light brown sweet ginger syrup with golden ginger strands'),
+ ('món ngọt ăn nóng hoặc lạnh, khối trắng mịn từ hạt nành, thêm trân châu đen và nước cốt dừa trắng béo', 'a sweet eaten hot or cold, smooth white soy curd with black tapioca pearls and rich white coconut milk')],
+'thit-dong': [
+ ('thạch trong có thịt và bì heo', 'clear jelly holding pork and pork skin'),
+ ('miếng thạch nâu nhạt, mộc nhĩ, cà rốt', 'light brown jelly slice with wood ear and carrot'),
+ ('khối thạch trong suốt hơi ngả nâu được cắt miếng vuông, bên trong lơ lửng miếng thịt chân giò, bì và mộc nhĩ', 'a clear slightly brownish jelly cut into squares, pieces of pork hock, skin and wood ear suspended inside'),
+ ('bát thạch lạnh đóng váng mỡ trắng trên mặt, ăn với dưa hành muối và cơm nóng ngày Tết', 'a bowl of cold set jelly with a white fat layer on top, eaten with pickled shallots and hot rice at Tết')],
+'thit-kho-tau': [
+ ('thịt ba chỉ, trứng luộc, nước nâu', 'pork belly and boiled eggs in brown liquid'),
+ ('nồi trứng nâu bóng cùng miếng thịt mỡ', 'pot of glossy brown eggs with fatty pork'),
+ ('nồi những miếng thịt ba chỉ vuông to có lớp bì, mỡ trong, cùng quả trứng luộc nguyên ngả màu nâu hổ phách', 'pot of large square pork belly pieces with skin and translucent fat, plus whole boiled eggs turned amber-brown'),
+ ('nước sốt nâu loãng ngọt từ nước dừa, ăn cùng cơm trắng và dưa giá hoặc dưa cải chua', 'thin sweet brown sauce made with coconut water, eaten with white rice and pickled sprouts or mustard greens')],
+'thit-trau-gac-bep': [
+ ('thanh thịt khô dài nâu đỏ sẫm', 'long dark reddish-brown dried meat sticks'),
+ ('thịt treo hun khói trên lửa', 'meat hung and smoked over fire'),
+ ('những thanh thịt dài sẫm màu treo thành hàng trên giàn tre phía trên đống lửa, mặt ngoài đen khô nứt', 'long dark meat strips hung in rows on a bamboo rack above a fire, the surface black, dry and cracked'),
+ ('đĩa thịt khô xé thành sợi nhỏ màu nâu đỏ, lộ thớ thịt, chấm chẩm chéo cay và hạt mắc khén', 'plate of dried meat torn into reddish-brown fibres, grain visible, with spicy chẩm chéo dip and mắc khén pepper')],
+'tiet-canh': [
+ ('đĩa máu đông đỏ tươi, rau thơm', 'plate of set bright red blood with herbs'),
+ ('lớp thạch đỏ thẫm, lạc rang, lòng băm', 'deep red jelly layer, roasted peanuts, chopped offal'),
+ ('đĩa sâu lòng đựng lớp máu đỏ tươi đã đông như thạch, mặt rắc lòng thái nhỏ, lạc rang và rau răm thái', 'deep plate of bright red blood set like jelly, topped with chopped offal, roasted peanuts and cut Vietnamese coriander'),
+ ('món đỏ rực xắn bằng thìa, mặt phủ lá chanh thái chỉ và rau thơm xanh, ăn kèm rượu và chanh ớt', 'a vivid red dish scooped with a spoon, topped with fine lime leaf and green herbs, with rice wine and lime-chili')],
+'trung-vit-lon': [
+ ('trứng luộc trong chén, gõ vỡ đầu', 'boiled egg in a cup with its top cracked'),
+ ('trứng có phôi, rau răm, muối tiêu', 'egg with embryo, Vietnamese coriander, salt and pepper'),
+ ('quả trứng to vỏ trắng ngà đặt đứng trong chén nhỏ, đầu vỏ gõ vỡ lộ lòng trắng và phôi sẫm màu bên trong', 'a large ivory egg standing in a small cup, the top cracked open to show white and a dark embryo inside'),
+ ('đĩa vài quả trứng luộc nóng, cạnh nắm rau răm xanh, gừng thái sợi và chén muối tiêu chanh', 'a few hot boiled eggs beside a handful of Vietnamese coriander, ginger strips and salt-pepper-lime')],
+'xoi-gac': [
+ ('xôi đỏ cam bóng đóng khuôn hoa', 'glossy orange-red sticky rice moulded as a flower'),
+ ('nếp màu đỏ rực, dừa nạo trắng', 'bright red sticky rice with white coconut'),
+ ('đĩa xôi hạt nếp dẻo màu đỏ cam rực rỡ bóng dầu, đóng khuôn hình bông hoa hoặc trái tim, có hạt đen', 'plate of glossy vivid orange-red sticky rice moulded as a flower or heart, with black seeds'),
+ ('xôi đỏ đều cả hạt chứ không phải vàng có lớp đậu xanh, thường bày ngày cưới và Tết, rắc dừa và mè', 'evenly red rice rather than yellow with mung bean, served at weddings and Tết, with coconut and sesame')],
+'xoi-nep-than': [
+ ('xôi tím đen, dừa nạo, mè', 'purple-black sticky rice with coconut and sesame'),
+ ('hạt dẻo màu tím sẫm, đậu xanh', 'dark purple sticky grains with mung bean'),
+ ('đĩa xôi hạt dẻo bóng màu tím đen như mực, phủ dừa nạo trắng, muối mè và đậu xanh vàng', 'plate of glossy sticky grains purple-black like ink, with white coconut, sesame salt and yellow mung bean'),
+ ('gói lá chuối mở ra thấy xôi màu tím sẫm, hạt dài, ăn sáng với chà bông hoặc nước cốt dừa', 'a banana-leaf parcel opened to dark purple sticky rice with long grains, a breakfast with meat floss or coconut milk')],
+'xoi-xeo': [
+ ('xôi vàng, đậu xanh mịn, hành phi', 'yellow sticky rice with smooth mung bean and fried shallots'),
+ ('gói giấy xôi vàng nghệ phủ hành giòn', 'paper-wrapped turmeric rice under crispy shallots'),
+ ('nắm xôi vàng nghệ đặt trên lá chuối, phủ lớp đậu xanh thái mỏng như lụa màu vàng nhạt và hành phi giòn nâu', 'a handful of turmeric-yellow sticky rice on banana leaf, covered with silky thin-shaved pale yellow mung bean and crispy brown shallots'),
+ ('xôi vàng chứ không đỏ, rưới mỡ gà bóng, ăn sáng vội gói trong giấy báo với muối vừng', 'yellow rather than red rice, drizzled with glossy chicken fat, a quick breakfast wrapped in paper with sesame salt')],
+}
+
+# rewrites: lower word overlap with desc_vi (_look) so captions do not echo the class descriptions
+O = {
+('banh-cong', 2): ('đĩa bánh chiên sẫm màu cao như cái ly nhỏ, mặt trên lồi lên với tép đỏ cong, bên cạnh khay rau xanh mướt', 'plate of dark fried cakes tall like small glasses, domed tops with a curled red prawn, next to a tray of fresh greens'),
+('banh-gai', 0): ('khối nếp đen như than, bọc lá nâu', 'block of coal-black sticky rice wrapped in brown leaf'),
+('banh-la', 2): ('tập lá chuối xanh mỏng dẹt chồng lên nhau như xấp thư, bóc một gói thấy màng bánh trắng đục bám lá, có vụn tôm cam', 'a stack of flat green banana-leaf packets like a pile of letters, one opened to show an opaque white film stuck to the leaf with orange shrimp crumbs'),
+('banh-mi', 2): ('ổ bánh dài như cánh tay xẻ dọc, ruột nhồi đầy thịt nguội nhiều màu, sợi cà rốt củ cải ngâm, cọng ngò và lát ớt', 'a forearm-long roll slit lengthwise, packed with multicoloured cold cuts, pickled carrot and radish strands, cilantro sprigs and chili slices'),
+('banh-mi-chao', 2): ('bữa sáng bốc khói trên khay gỗ, giữa là đồ sắt tròn đen chứa hai quả trứng lòng đào, viên thịt đỏ sệt và khúc xúc xích', 'a steaming breakfast on a wooden tray, a round black iron dish in the middle with two runny eggs, saucy red meatballs and a sausage'),
+('banh-tieu', 0): ('bánh mè vàng phồng như gối nhỏ', 'golden sesame bread puffed like a little pillow'),
+('banh-tieu', 1): ('túi ni lông đựng bánh rỗng chiên dầu', 'plastic bag of hollow oil-fried breads'),
+('banh-troi-nuoc', 2): ('chén sứ nhỏ, mấy viên tròn trắng mập ngâm trong thứ nước sánh sẫm màu thơm gừng, phía trên có vệt cốt dừa và mè rang vàng', 'small porcelain bowl, a few plump white balls soaking in dark thick ginger-scented syrup, streaks of coconut cream and golden toasted sesame on top'),
+('ca-sot-ca-chua', 0): ('đĩa khúc thân vàng ngập nước màu đỏ', 'plate of golden chunks drowned in red sauce'),
+('canh-bi-do', 2): ('nồi nước ngọt màu vàng nhạt, khối củ quả cam mềm tơi như sắp tan, thêm vụn thịt hồng và lá hành xanh nổi', 'a pot of sweet pale yellow broth, soft orange chunks almost dissolving, bits of pink meat and floating green scallion'),
+('canh-kho-hoa', 2): ('những khúc quả xanh nhạt như ống, mặt ngoài lồi lõm gợn sóng, giữa lộ nhân nâu hồng, nổi trong nồi nước dùng nhạt màu', 'pale green tube-like gourd pieces with wavy bumpy skin, a pinkish-brown filling showing in the middle, floating in a light broth'),
+('com-chay-cha-bong', 2): ('khay vuông xếp những miếng giòn màu nâu cam, bề mặt phủ dày lớp sợi tơi nhỏ li ti như rơm, lấm tấm hành xanh và lát ớt', 'a square tray of crunchy orange-brown pieces, thickly covered with tiny fluffy straw-like strands, dotted with green scallion and chili'),
+('com-chien', 2): ('chảo cơm vàng đảo bốc khói, từng hạt bóng tách rời, điểm hạt xanh, hạt cam, lát xúc xích đỏ và mẩu trứng rán', 'a smoking pan of tossed golden rice, each shiny grain separate, dotted with green and orange bits, red sausage slices and scraps of fried egg'),
+('com-lam', 2): ('bó những đoạn trúc dài đen nhẻm vì lửa, một đoạn được tước vỏ lộ ra thỏi trắng dẻo mịn như cây nến lớn', 'a bundle of long fire-blackened bamboo sections, one stripped to reveal a smooth sticky white stick like a big candle'),
+('com-rang-dua-bo', 0): ('đĩa cơm vàng với lá cải ngâm', 'golden rice plate with pickled greens'),
+('ga-chien-nuoc-mam', 2): ('rổ cánh và đùi nhỏ bóng như phủ mật, vỏ giòn sẫm màu caramen, điểm vụn trắng vàng và ớt tươi thái lát', 'a basket of wings and drumettes shiny as if honey-coated, crisp caramel-dark skin, dotted with golden-white bits and sliced fresh chili'),
+('hu-tieu', 2): ('tô nước dùng trong veo nhìn thấy đáy, sợi mảnh hơi trong ngả vàng nhạt, trên có con tôm cong, lát gan nâu và cọng hẹ dài', 'a bowl of broth so clear you see the bottom, thin slightly translucent pale noodles, a curled shrimp, brown liver slices and long chive stems'),
+('khau-nhuc', 2): ('đĩa tròn úp ngược thành khối vòm, từng lớp mỡ nạc và khoai xen nhau như xếp ngói, mặt bì nhăn bóng nâu đỏ', 'turned out onto a round plate as a dome, layers of fat, lean and taro overlapping like roof tiles, the wrinkled skin glossy reddish-brown'),
+('mam-chung', 0): ('chén nhỏ mặt trứng vàng óng, hấp cách thủy', 'small bowl with a shiny yellow egg top, steamed in a water bath'),
+('mi-quang', 2): ('bát sợi bản rộng vàng óng nằm gần như khô, chỉ láng chút nước màu cam, bên trên xếp tôm đỏ, trứng cút bóc vỏ và lạc rang', 'bowl of wide glossy yellow noodles almost dry, just a slick of orange broth, topped with red shrimp, peeled quail eggs and roasted peanuts'),
+('mi-xao-gion', 0): ('tổ sợi vàng rộm dưới lớp tôm mực', 'golden noodle nest under shrimp and squid'),
+('pho', 2): ('bát to nghi ngút khói, sợi gạo bản mỏng mềm mượt chìm trong nước dùng trong, mặt nổi lát thịt tái hồng, vòng hành tây và ngò gai', 'a big steaming bowl, soft silky thin flat rice noodles sunk in clear broth, pink rare meat slices, onion rings and sawtooth herb on top'),
+('rau-muong-xao', 1): ('đĩa cọng ống xanh giòn cắt khúc', 'plate of crisp green hollow stems cut in lengths'),
+('thit-kho-tau', 2): ('nồi đất đầy nước màu cánh gián, nổi những quả trứng tròn nâu bóng xen miếng thịt ba lớp trắng hồng, váng mỡ vàng', 'a clay pot of caramel-coloured liquid with glossy round brown eggs floating among three-layer pink and white pork, a golden fat slick'),
+('tiet-canh', 0): ('đĩa thạch đỏ tươi phủ lá xanh thái', 'plate of bright red jelly under shredded green leaves'),
+('xoi-nep-than', 0): ('nắm hạt dẻo đen tím, sợi dừa trắng', 'handful of black-purple sticky grains, white coconut strands'),
+('xoi-xeo', 2): ('gói giấy mở ra thấy nắm xôi màu nghệ, bên trên là những lát đậu mịn mỏng vàng nhạt như phoi bào và rất nhiều vụn hành chiên', 'a paper parcel opened to a lump of turmeric rice, topped with pale yellow bean slivers fine as wood shavings and lots of fried shallot crumbs'),
+}
+for (lab, k), v in O.items():
+    C[lab][k] = v
+
+src, out_csv, out_json = sys.argv[1], sys.argv[2], sys.argv[3]
+rows = list(csv.DictReader(open(src, encoding='utf-8-sig')))
+labels = {r['label'] for r in rows}
+missing = labels - set(C)
+extra = set(C) - labels
+assert not missing and not extra, (missing, extra)
+pos = {'s1': 0, 's2': 1, 'l1': 2, 'l2': 3}
+for r in rows:
+    vi, en = C[r['label']][pos[r['id'].split('_')[1]]]
+    r['text_vi'], r['text_en'], r['author'] = vi, en, AUTHOR
+with open(out_csv, 'w', newline='', encoding='utf-8-sig') as fh:
+    w = csv.DictWriter(fh, list(rows[0].keys()))
+    w.writeheader()
+    w.writerows(rows)
+json.dump({'author': AUTHOR, 'note': 'machine-written draft captions; replace with human-written ones where possible',
+           'captions': C}, open(out_json, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+print('filled', len(rows), 'rows')

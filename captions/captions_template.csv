@@ -1,0 +1,413 @@
+﻿id,label,author,split,text_vi,text_en,_length,_name_vi,_look,_avoid,_confusable
+c000_s1,baba-nau-chuoi-dau,,test,,,short,Ba ba nấu chuối đậu,"miếng thịt to có lớp da sẫm dày, nước om vàng nghệ, chuối xanh, đậu phụ rán, rau tía tô, thường trong nồi lẩu",Ba ba nấu chuối đậu; ba; chuối; đậu; ba ba; baba,luon-om-chuoi-dau
+c000_s2,baba-nau-chuoi-dau,,val,,,short,Ba ba nấu chuối đậu,"miếng thịt to có lớp da sẫm dày, nước om vàng nghệ, chuối xanh, đậu phụ rán, rau tía tô, thường trong nồi lẩu",Ba ba nấu chuối đậu; ba; chuối; đậu; ba ba; baba,luon-om-chuoi-dau
+c000_l1,baba-nau-chuoi-dau,,val,,,long,Ba ba nấu chuối đậu,"miếng thịt to có lớp da sẫm dày, nước om vàng nghệ, chuối xanh, đậu phụ rán, rau tía tô, thường trong nồi lẩu",Ba ba nấu chuối đậu; ba; chuối; đậu; ba ba; baba,luon-om-chuoi-dau
+c000_l2,baba-nau-chuoi-dau,,test,,,long,Ba ba nấu chuối đậu,"miếng thịt to có lớp da sẫm dày, nước om vàng nghệ, chuối xanh, đậu phụ rán, rau tía tô, thường trong nồi lẩu",Ba ba nấu chuối đậu; ba; chuối; đậu; ba ba; baba,luon-om-chuoi-dau
+c001_s1,banh-bao,,val,,,short,Bánh bao,"những chiếc bánh tròn trắng xốp, mặt trơn hoặc xếp nếp, bổ đôi thấy nhân thịt và trứng",Bánh bao; bao,
+c001_s2,banh-bao,,test,,,short,Bánh bao,"những chiếc bánh tròn trắng xốp, mặt trơn hoặc xếp nếp, bổ đôi thấy nhân thịt và trứng",Bánh bao; bao,
+c001_l1,banh-bao,,val,,,long,Bánh bao,"những chiếc bánh tròn trắng xốp, mặt trơn hoặc xếp nếp, bổ đôi thấy nhân thịt và trứng",Bánh bao; bao,
+c001_l2,banh-bao,,test,,,long,Bánh bao,"những chiếc bánh tròn trắng xốp, mặt trơn hoặc xếp nếp, bổ đôi thấy nhân thịt và trứng",Bánh bao; bao,
+c002_s1,banh-beo,,test,,,short,Bánh bèo,"nhiều chén nhỏ, mỗi chén một lớp bột gạo trắng mỏng, rắc tôm chấy cam, tóp mỡ và mỡ hành",Bánh bèo; bèo,banh-bot-loc
+c002_s2,banh-beo,,val,,,short,Bánh bèo,"nhiều chén nhỏ, mỗi chén một lớp bột gạo trắng mỏng, rắc tôm chấy cam, tóp mỡ và mỡ hành",Bánh bèo; bèo,banh-bot-loc
+c002_l1,banh-beo,,test,,,long,Bánh bèo,"nhiều chén nhỏ, mỗi chén một lớp bột gạo trắng mỏng, rắc tôm chấy cam, tóp mỡ và mỡ hành",Bánh bèo; bèo,banh-bot-loc
+c002_l2,banh-beo,,val,,,long,Bánh bèo,"nhiều chén nhỏ, mỗi chén một lớp bột gạo trắng mỏng, rắc tôm chấy cam, tóp mỡ và mỡ hành",Bánh bèo; bèo,banh-bot-loc
+c003_s1,banh-bo,,test,,,short,Bánh bò,"bánh mềm xốp màu trắng hoặc xanh lá, hồng nhạt, hình tròn hoặc cắt miếng, ruột có rỗ tổ ong",Bánh bò; bò,banh-da-lon
+c003_s2,banh-bo,,val,,,short,Bánh bò,"bánh mềm xốp màu trắng hoặc xanh lá, hồng nhạt, hình tròn hoặc cắt miếng, ruột có rỗ tổ ong",Bánh bò; bò,banh-da-lon
+c003_l1,banh-bo,,val,,,long,Bánh bò,"bánh mềm xốp màu trắng hoặc xanh lá, hồng nhạt, hình tròn hoặc cắt miếng, ruột có rỗ tổ ong",Bánh bò; bò,banh-da-lon
+c003_l2,banh-bo,,test,,,long,Bánh bò,"bánh mềm xốp màu trắng hoặc xanh lá, hồng nhạt, hình tròn hoặc cắt miếng, ruột có rỗ tổ ong",Bánh bò; bò,banh-da-lon
+c004_s1,banh-bot-loc,,val,,,short,Bánh bột lọc,"viên bánh trong suốt dẻo, nhìn thấy nhân tôm đỏ và thịt, có khi gói lá chuối, rưới mỡ hành",Bánh bột lọc; bột; lọc,banh-beo
+c004_s2,banh-bot-loc,,test,,,short,Bánh bột lọc,"viên bánh trong suốt dẻo, nhìn thấy nhân tôm đỏ và thịt, có khi gói lá chuối, rưới mỡ hành",Bánh bột lọc; bột; lọc,banh-beo
+c004_l1,banh-bot-loc,,val,,,long,Bánh bột lọc,"viên bánh trong suốt dẻo, nhìn thấy nhân tôm đỏ và thịt, có khi gói lá chuối, rưới mỡ hành",Bánh bột lọc; bột; lọc,banh-beo
+c004_l2,banh-bot-loc,,test,,,long,Bánh bột lọc,"viên bánh trong suốt dẻo, nhìn thấy nhân tôm đỏ và thịt, có khi gói lá chuối, rưới mỡ hành",Bánh bột lọc; bột; lọc,banh-beo
+c005_s1,banh-can,,test,,,short,Bánh căn,"bánh tròn nhỏ đổ trong khuôn đất, mặt có trứng hoặc hải sản, ăn với chén nước chấm và xoài xanh",Bánh căn; căn,banh-khot
+c005_s2,banh-can,,val,,,short,Bánh căn,"bánh tròn nhỏ đổ trong khuôn đất, mặt có trứng hoặc hải sản, ăn với chén nước chấm và xoài xanh",Bánh căn; căn,banh-khot
+c005_l1,banh-can,,val,,,long,Bánh căn,"bánh tròn nhỏ đổ trong khuôn đất, mặt có trứng hoặc hải sản, ăn với chén nước chấm và xoài xanh",Bánh căn; căn,banh-khot
+c005_l2,banh-can,,test,,,long,Bánh căn,"bánh tròn nhỏ đổ trong khuôn đất, mặt có trứng hoặc hải sản, ăn với chén nước chấm và xoài xanh",Bánh căn; căn,banh-khot
+c006_s1,banh-canh,,val,,,short,Bánh canh,"tô sợi trắng to tròn dai, nước dùng hơi sánh đục, có tôm, thịt, chả cá hoặc cua, hành lá",Bánh canh,"hu-tieu, bun-rieu"
+c006_s2,banh-canh,,test,,,short,Bánh canh,"tô sợi trắng to tròn dai, nước dùng hơi sánh đục, có tôm, thịt, chả cá hoặc cua, hành lá",Bánh canh,"hu-tieu, bun-rieu"
+c006_l1,banh-canh,,test,,,long,Bánh canh,"tô sợi trắng to tròn dai, nước dùng hơi sánh đục, có tôm, thịt, chả cá hoặc cua, hành lá",Bánh canh,"hu-tieu, bun-rieu"
+c006_l2,banh-canh,,val,,,long,Bánh canh,"tô sợi trắng to tròn dai, nước dùng hơi sánh đục, có tôm, thịt, chả cá hoặc cua, hành lá",Bánh canh,"hu-tieu, bun-rieu"
+c007_s1,banh-chung,,test,,,short,Bánh chưng,"bánh vuông gói lá dong buộc lạt, cắt ra thấy nếp xanh, nhân đậu xanh vàng và thịt mỡ",Bánh chưng; chưng,banh-tet
+c007_s2,banh-chung,,val,,,short,Bánh chưng,"bánh vuông gói lá dong buộc lạt, cắt ra thấy nếp xanh, nhân đậu xanh vàng và thịt mỡ",Bánh chưng; chưng,banh-tet
+c007_l1,banh-chung,,test,,,long,Bánh chưng,"bánh vuông gói lá dong buộc lạt, cắt ra thấy nếp xanh, nhân đậu xanh vàng và thịt mỡ",Bánh chưng; chưng,banh-tet
+c007_l2,banh-chung,,val,,,long,Bánh chưng,"bánh vuông gói lá dong buộc lạt, cắt ra thấy nếp xanh, nhân đậu xanh vàng và thịt mỡ",Bánh chưng; chưng,banh-tet
+c008_s1,banh-cong,,test,,,short,Bánh cống,"bánh chiên vàng giòn hình trụ như cái cốc nhỏ, trên có con tôm nguyên vỏ, ăn kèm xà lách và rau sống",Bánh cống; cống,
+c008_s2,banh-cong,,val,,,short,Bánh cống,"bánh chiên vàng giòn hình trụ như cái cốc nhỏ, trên có con tôm nguyên vỏ, ăn kèm xà lách và rau sống",Bánh cống; cống,
+c008_l1,banh-cong,,val,,,long,Bánh cống,"bánh chiên vàng giòn hình trụ như cái cốc nhỏ, trên có con tôm nguyên vỏ, ăn kèm xà lách và rau sống",Bánh cống; cống,
+c008_l2,banh-cong,,test,,,long,Bánh cống,"bánh chiên vàng giòn hình trụ như cái cốc nhỏ, trên có con tôm nguyên vỏ, ăn kèm xà lách và rau sống",Bánh cống; cống,
+c009_s1,banh-cuon,,test,,,short,Bánh cuốn,"lá bánh gạo mỏng trắng cuộn nhân thịt băm mộc nhĩ, rắc hành phi, ăn với chả lụa và nước chấm",Bánh cuốn; cuốn,banh-duc
+c009_s2,banh-cuon,,val,,,short,Bánh cuốn,"lá bánh gạo mỏng trắng cuộn nhân thịt băm mộc nhĩ, rắc hành phi, ăn với chả lụa và nước chấm",Bánh cuốn; cuốn,banh-duc
+c009_l1,banh-cuon,,test,,,long,Bánh cuốn,"lá bánh gạo mỏng trắng cuộn nhân thịt băm mộc nhĩ, rắc hành phi, ăn với chả lụa và nước chấm",Bánh cuốn; cuốn,banh-duc
+c009_l2,banh-cuon,,val,,,long,Bánh cuốn,"lá bánh gạo mỏng trắng cuộn nhân thịt băm mộc nhĩ, rắc hành phi, ăn với chả lụa và nước chấm",Bánh cuốn; cuốn,banh-duc
+c010_s1,banh-da-cua,,val,,,short,Bánh đa cua,"tô sợi dẹt màu nâu đỏ, nước dùng cua có gạch cua vón cục, chả cá, rau muống, đậu rán",Bánh đa cua; cua; đa; bánh đa,
+c010_s2,banh-da-cua,,test,,,short,Bánh đa cua,"tô sợi dẹt màu nâu đỏ, nước dùng cua có gạch cua vón cục, chả cá, rau muống, đậu rán",Bánh đa cua; cua; đa; bánh đa,
+c010_l1,banh-da-cua,,test,,,long,Bánh đa cua,"tô sợi dẹt màu nâu đỏ, nước dùng cua có gạch cua vón cục, chả cá, rau muống, đậu rán",Bánh đa cua; cua; đa; bánh đa,
+c010_l2,banh-da-cua,,val,,,long,Bánh đa cua,"tô sợi dẹt màu nâu đỏ, nước dùng cua có gạch cua vón cục, chả cá, rau muống, đậu rán",Bánh đa cua; cua; đa; bánh đa,
+c011_s1,banh-da-lon,,test,,,short,Bánh da lợn,"bánh hấp dẻo gồm nhiều lớp mỏng xen kẽ xanh lá dứa và vàng hoặc màu khác, cắt lát hoặc đổ khuôn",Bánh da lợn; da; lợn,banh-bo
+c011_s2,banh-da-lon,,val,,,short,Bánh da lợn,"bánh hấp dẻo gồm nhiều lớp mỏng xen kẽ xanh lá dứa và vàng hoặc màu khác, cắt lát hoặc đổ khuôn",Bánh da lợn; da; lợn,banh-bo
+c011_l1,banh-da-lon,,test,,,long,Bánh da lợn,"bánh hấp dẻo gồm nhiều lớp mỏng xen kẽ xanh lá dứa và vàng hoặc màu khác, cắt lát hoặc đổ khuôn",Bánh da lợn; da; lợn,banh-bo
+c011_l2,banh-da-lon,,val,,,long,Bánh da lợn,"bánh hấp dẻo gồm nhiều lớp mỏng xen kẽ xanh lá dứa và vàng hoặc màu khác, cắt lát hoặc đổ khuôn",Bánh da lợn; da; lợn,banh-bo
+c012_s1,banh-duc,,test,,,short,Bánh đúc,"miếng bánh mềm mịn màu trắng hoặc xanh nhạt, phủ thịt băm, hành phi, rau thơm, hoặc ăn trong bát có nước sốt",Bánh đúc; đúc,"banh-gio, banh-cuon"
+c012_s2,banh-duc,,val,,,short,Bánh đúc,"miếng bánh mềm mịn màu trắng hoặc xanh nhạt, phủ thịt băm, hành phi, rau thơm, hoặc ăn trong bát có nước sốt",Bánh đúc; đúc,"banh-gio, banh-cuon"
+c012_l1,banh-duc,,val,,,long,Bánh đúc,"miếng bánh mềm mịn màu trắng hoặc xanh nhạt, phủ thịt băm, hành phi, rau thơm, hoặc ăn trong bát có nước sốt",Bánh đúc; đúc,"banh-gio, banh-cuon"
+c012_l2,banh-duc,,test,,,long,Bánh đúc,"miếng bánh mềm mịn màu trắng hoặc xanh nhạt, phủ thịt băm, hành phi, rau thơm, hoặc ăn trong bát có nước sốt",Bánh đúc; đúc,"banh-gio, banh-cuon"
+c013_s1,banh-gai,,test,,,short,Bánh gai,"bánh vuông gói lá chuối khô, vỏ nếp đen bóng, nhân đậu xanh vàng và dừa",Bánh gai; gai,
+c013_s2,banh-gai,,val,,,short,Bánh gai,"bánh vuông gói lá chuối khô, vỏ nếp đen bóng, nhân đậu xanh vàng và dừa",Bánh gai; gai,
+c013_l1,banh-gai,,val,,,long,Bánh gai,"bánh vuông gói lá chuối khô, vỏ nếp đen bóng, nhân đậu xanh vàng và dừa",Bánh gai; gai,
+c013_l2,banh-gai,,test,,,long,Bánh gai,"bánh vuông gói lá chuối khô, vỏ nếp đen bóng, nhân đậu xanh vàng và dừa",Bánh gai; gai,
+c014_s1,banh-giay,,val,,,short,Bánh giầy,"bánh tròn dẹt trắng tinh, thường kẹp một lát chả lụa, đặt trên lá xanh",Bánh giầy; giầy,
+c014_s2,banh-giay,,test,,,short,Bánh giầy,"bánh tròn dẹt trắng tinh, thường kẹp một lát chả lụa, đặt trên lá xanh",Bánh giầy; giầy,
+c014_l1,banh-giay,,test,,,long,Bánh giầy,"bánh tròn dẹt trắng tinh, thường kẹp một lát chả lụa, đặt trên lá xanh",Bánh giầy; giầy,
+c014_l2,banh-giay,,val,,,long,Bánh giầy,"bánh tròn dẹt trắng tinh, thường kẹp một lát chả lụa, đặt trên lá xanh",Bánh giầy; giầy,
+c015_s1,banh-gio,,val,,,short,Bánh giò,"bánh hình chóp mềm trắng gói lá chuối, bóc ra thấy nhân thịt mộc nhĩ, hay ăn với tương ớt và xúc xích",Bánh giò; giò,banh-duc
+c015_s2,banh-gio,,test,,,short,Bánh giò,"bánh hình chóp mềm trắng gói lá chuối, bóc ra thấy nhân thịt mộc nhĩ, hay ăn với tương ớt và xúc xích",Bánh giò; giò,banh-duc
+c015_l1,banh-gio,,test,,,long,Bánh giò,"bánh hình chóp mềm trắng gói lá chuối, bóc ra thấy nhân thịt mộc nhĩ, hay ăn với tương ớt và xúc xích",Bánh giò; giò,banh-duc
+c015_l2,banh-gio,,val,,,long,Bánh giò,"bánh hình chóp mềm trắng gói lá chuối, bóc ra thấy nhân thịt mộc nhĩ, hay ăn với tương ớt và xúc xích",Bánh giò; giò,banh-duc
+c016_s1,banh-hoi,,test,,,short,Bánh hỏi,"những tấm sợi bún rất mảnh đan thành miếng, phết mỡ hành xanh, ăn với thịt nướng và rau sống",Bánh hỏi; hỏi,bo-la-lot
+c016_s2,banh-hoi,,val,,,short,Bánh hỏi,"những tấm sợi bún rất mảnh đan thành miếng, phết mỡ hành xanh, ăn với thịt nướng và rau sống",Bánh hỏi; hỏi,bo-la-lot
+c016_l1,banh-hoi,,val,,,long,Bánh hỏi,"những tấm sợi bún rất mảnh đan thành miếng, phết mỡ hành xanh, ăn với thịt nướng và rau sống",Bánh hỏi; hỏi,bo-la-lot
+c016_l2,banh-hoi,,test,,,long,Bánh hỏi,"những tấm sợi bún rất mảnh đan thành miếng, phết mỡ hành xanh, ăn với thịt nướng và rau sống",Bánh hỏi; hỏi,bo-la-lot
+c017_s1,banh-khot,,val,,,short,Bánh khọt,"bánh nhỏ tròn vàng giòn, mỗi cái có một con tôm ở giữa, ăn với xà lách, rau thơm và nước mắm",Bánh khọt; khọt,banh-can
+c017_s2,banh-khot,,test,,,short,Bánh khọt,"bánh nhỏ tròn vàng giòn, mỗi cái có một con tôm ở giữa, ăn với xà lách, rau thơm và nước mắm",Bánh khọt; khọt,banh-can
+c017_l1,banh-khot,,val,,,long,Bánh khọt,"bánh nhỏ tròn vàng giòn, mỗi cái có một con tôm ở giữa, ăn với xà lách, rau thơm và nước mắm",Bánh khọt; khọt,banh-can
+c017_l2,banh-khot,,test,,,long,Bánh khọt,"bánh nhỏ tròn vàng giòn, mỗi cái có một con tôm ở giữa, ăn với xà lách, rau thơm và nước mắm",Bánh khọt; khọt,banh-can
+c018_s1,banh-la,,test,,,short,Bánh lá (bánh nậm / bánh lọc lá),"bánh dẹt mỏng hình chữ nhật gói trong lá chuối, mở ra thấy lớp bột trắng mềm và chút nhân tôm thịt hồng",Bánh lá (bánh nậm / bánh lọc lá); lọc; nậm,
+c018_s2,banh-la,,val,,,short,Bánh lá (bánh nậm / bánh lọc lá),"bánh dẹt mỏng hình chữ nhật gói trong lá chuối, mở ra thấy lớp bột trắng mềm và chút nhân tôm thịt hồng",Bánh lá (bánh nậm / bánh lọc lá); lọc; nậm,
+c018_l1,banh-la,,test,,,long,Bánh lá (bánh nậm / bánh lọc lá),"bánh dẹt mỏng hình chữ nhật gói trong lá chuối, mở ra thấy lớp bột trắng mềm và chút nhân tôm thịt hồng",Bánh lá (bánh nậm / bánh lọc lá); lọc; nậm,
+c018_l2,banh-la,,val,,,long,Bánh lá (bánh nậm / bánh lọc lá),"bánh dẹt mỏng hình chữ nhật gói trong lá chuối, mở ra thấy lớp bột trắng mềm và chút nhân tôm thịt hồng",Bánh lá (bánh nậm / bánh lọc lá); lọc; nậm,
+c019_s1,banh-mi,,val,,,short,Bánh mì,"ổ bánh vỏ giòn xẻ dọc, kẹp thịt, pa tê, đồ chua cà rốt củ cải, dưa leo, ngò và ớt",Bánh mì,
+c019_s2,banh-mi,,test,,,short,Bánh mì,"ổ bánh vỏ giòn xẻ dọc, kẹp thịt, pa tê, đồ chua cà rốt củ cải, dưa leo, ngò và ớt",Bánh mì,
+c019_l1,banh-mi,,test,,,long,Bánh mì,"ổ bánh vỏ giòn xẻ dọc, kẹp thịt, pa tê, đồ chua cà rốt củ cải, dưa leo, ngò và ớt",Bánh mì,
+c019_l2,banh-mi,,val,,,long,Bánh mì,"ổ bánh vỏ giòn xẻ dọc, kẹp thịt, pa tê, đồ chua cà rốt củ cải, dưa leo, ngò và ớt",Bánh mì,
+c020_s1,banh-mi-chao,,test,,,short,Bánh mì chảo,"đĩa gang tròn có trứng ốp la, pa tê, xúc xích, xíu mại sốt, ăn kèm ổ bánh vỏ giòn để riêng",Bánh mì chảo; chảo; bánh mì,bo-ne
+c020_s2,banh-mi-chao,,val,,,short,Bánh mì chảo,"đĩa gang tròn có trứng ốp la, pa tê, xúc xích, xíu mại sốt, ăn kèm ổ bánh vỏ giòn để riêng",Bánh mì chảo; chảo; bánh mì,bo-ne
+c020_l1,banh-mi-chao,,test,,,long,Bánh mì chảo,"đĩa gang tròn có trứng ốp la, pa tê, xúc xích, xíu mại sốt, ăn kèm ổ bánh vỏ giòn để riêng",Bánh mì chảo; chảo; bánh mì,bo-ne
+c020_l2,banh-mi-chao,,val,,,long,Bánh mì chảo,"đĩa gang tròn có trứng ốp la, pa tê, xúc xích, xíu mại sốt, ăn kèm ổ bánh vỏ giòn để riêng",Bánh mì chảo; chảo; bánh mì,bo-ne
+c021_s1,banh-pia,,test,,,short,Bánh pía,"bánh tròn dẹt vỏ nhiều lớp mỏng trắng, mặt đóng dấu đỏ, cắt ra có nhân đậu xanh, sầu riêng, lòng đỏ trứng muối",Bánh pía; pía,
+c021_s2,banh-pia,,val,,,short,Bánh pía,"bánh tròn dẹt vỏ nhiều lớp mỏng trắng, mặt đóng dấu đỏ, cắt ra có nhân đậu xanh, sầu riêng, lòng đỏ trứng muối",Bánh pía; pía,
+c021_l1,banh-pia,,val,,,long,Bánh pía,"bánh tròn dẹt vỏ nhiều lớp mỏng trắng, mặt đóng dấu đỏ, cắt ra có nhân đậu xanh, sầu riêng, lòng đỏ trứng muối",Bánh pía; pía,
+c021_l2,banh-pia,,test,,,long,Bánh pía,"bánh tròn dẹt vỏ nhiều lớp mỏng trắng, mặt đóng dấu đỏ, cắt ra có nhân đậu xanh, sầu riêng, lòng đỏ trứng muối",Bánh pía; pía,
+c022_s1,banh-tai-heo,,test,,,short,Bánh tai heo,"bánh quy chiên giòn nhỏ có hình xoắn ốc hai màu, trắng nâu hoặc nhiều màu, đổ đầy bát hoặc hũ",Bánh tai heo; heo; tai,
+c022_s2,banh-tai-heo,,val,,,short,Bánh tai heo,"bánh quy chiên giòn nhỏ có hình xoắn ốc hai màu, trắng nâu hoặc nhiều màu, đổ đầy bát hoặc hũ",Bánh tai heo; heo; tai,
+c022_l1,banh-tai-heo,,val,,,long,Bánh tai heo,"bánh quy chiên giòn nhỏ có hình xoắn ốc hai màu, trắng nâu hoặc nhiều màu, đổ đầy bát hoặc hũ",Bánh tai heo; heo; tai,
+c022_l2,banh-tai-heo,,test,,,long,Bánh tai heo,"bánh quy chiên giòn nhỏ có hình xoắn ốc hai màu, trắng nâu hoặc nhiều màu, đổ đầy bát hoặc hũ",Bánh tai heo; heo; tai,
+c023_s1,banh-tet,,test,,,short,Bánh tét,"đòn bánh dài gói lá chuối, cắt khoanh tròn thấy vòng nhân đậu xanh vàng và thịt mỡ ở giữa",Bánh tét; tét,banh-chung
+c023_s2,banh-tet,,val,,,short,Bánh tét,"đòn bánh dài gói lá chuối, cắt khoanh tròn thấy vòng nhân đậu xanh vàng và thịt mỡ ở giữa",Bánh tét; tét,banh-chung
+c023_l1,banh-tet,,val,,,long,Bánh tét,"đòn bánh dài gói lá chuối, cắt khoanh tròn thấy vòng nhân đậu xanh vàng và thịt mỡ ở giữa",Bánh tét; tét,banh-chung
+c023_l2,banh-tet,,test,,,long,Bánh tét,"đòn bánh dài gói lá chuối, cắt khoanh tròn thấy vòng nhân đậu xanh vàng và thịt mỡ ở giữa",Bánh tét; tét,banh-chung
+c024_s1,banh-tieu,,val,,,short,Bánh tiêu,"bánh chiên tròn dẹt vàng nâu, phồng rỗng ruột, rắc mè trắng",Bánh tiêu; tiêu,
+c024_s2,banh-tieu,,test,,,short,Bánh tiêu,"bánh chiên tròn dẹt vàng nâu, phồng rỗng ruột, rắc mè trắng",Bánh tiêu; tiêu,
+c024_l1,banh-tieu,,test,,,long,Bánh tiêu,"bánh chiên tròn dẹt vàng nâu, phồng rỗng ruột, rắc mè trắng",Bánh tiêu; tiêu,
+c024_l2,banh-tieu,,val,,,long,Bánh tiêu,"bánh chiên tròn dẹt vàng nâu, phồng rỗng ruột, rắc mè trắng",Bánh tiêu; tiêu,
+c025_s1,banh-tom-ho-tay,,val,,,short,Bánh tôm Hồ Tây,"bánh chiên vàng giòn làm từ khoai lang thái sợi, mặt có tôm đỏ nguyên con, ăn với rau sống và nước chấm",Bánh tôm Hồ Tây; hồ; tây; tôm; Hồ Tây,
+c025_s2,banh-tom-ho-tay,,test,,,short,Bánh tôm Hồ Tây,"bánh chiên vàng giòn làm từ khoai lang thái sợi, mặt có tôm đỏ nguyên con, ăn với rau sống và nước chấm",Bánh tôm Hồ Tây; hồ; tây; tôm; Hồ Tây,
+c025_l1,banh-tom-ho-tay,,val,,,long,Bánh tôm Hồ Tây,"bánh chiên vàng giòn làm từ khoai lang thái sợi, mặt có tôm đỏ nguyên con, ăn với rau sống và nước chấm",Bánh tôm Hồ Tây; hồ; tây; tôm; Hồ Tây,
+c025_l2,banh-tom-ho-tay,,test,,,long,Bánh tôm Hồ Tây,"bánh chiên vàng giòn làm từ khoai lang thái sợi, mặt có tôm đỏ nguyên con, ăn với rau sống và nước chấm",Bánh tôm Hồ Tây; hồ; tây; tôm; Hồ Tây,
+c026_s1,banh-trang-nuong,,val,,,short,Bánh tráng nướng,"một lá bánh mỏng nướng than giòn, phủ trứng, hành lá, tép khô, tương ớt, có khi gập đôi",Bánh tráng nướng; nướng; tráng,
+c026_s2,banh-trang-nuong,,test,,,short,Bánh tráng nướng,"một lá bánh mỏng nướng than giòn, phủ trứng, hành lá, tép khô, tương ớt, có khi gập đôi",Bánh tráng nướng; nướng; tráng,
+c026_l1,banh-trang-nuong,,val,,,long,Bánh tráng nướng,"một lá bánh mỏng nướng than giòn, phủ trứng, hành lá, tép khô, tương ớt, có khi gập đôi",Bánh tráng nướng; nướng; tráng,
+c026_l2,banh-trang-nuong,,test,,,long,Bánh tráng nướng,"một lá bánh mỏng nướng than giòn, phủ trứng, hành lá, tép khô, tương ớt, có khi gập đôi",Bánh tráng nướng; nướng; tráng,
+c027_s1,banh-troi-nuoc,,val,,,short,Bánh trôi nước / chè trôi nước,"viên tròn trắng hoặc có màu chìm trong nước đường gừng, rưới nước cốt dừa và rắc mè",Bánh trôi nước / chè trôi nước; chè; trôi,
+c027_s2,banh-troi-nuoc,,test,,,short,Bánh trôi nước / chè trôi nước,"viên tròn trắng hoặc có màu chìm trong nước đường gừng, rưới nước cốt dừa và rắc mè",Bánh trôi nước / chè trôi nước; chè; trôi,
+c027_l1,banh-troi-nuoc,,val,,,long,Bánh trôi nước / chè trôi nước,"viên tròn trắng hoặc có màu chìm trong nước đường gừng, rưới nước cốt dừa và rắc mè",Bánh trôi nước / chè trôi nước; chè; trôi,
+c027_l2,banh-troi-nuoc,,test,,,long,Bánh trôi nước / chè trôi nước,"viên tròn trắng hoặc có màu chìm trong nước đường gừng, rưới nước cốt dừa và rắc mè",Bánh trôi nước / chè trôi nước; chè; trôi,
+c028_s1,banh-trung-thu,,test,,,short,Bánh trung thu,"bánh nướng tròn hoặc vuông màu nâu vàng, mặt in hoa văn nổi, cắt ra có nhân và lòng đỏ trứng",Bánh trung thu; thu; trung; Trung,
+c028_s2,banh-trung-thu,,val,,,short,Bánh trung thu,"bánh nướng tròn hoặc vuông màu nâu vàng, mặt in hoa văn nổi, cắt ra có nhân và lòng đỏ trứng",Bánh trung thu; thu; trung; Trung,
+c028_l1,banh-trung-thu,,test,,,long,Bánh trung thu,"bánh nướng tròn hoặc vuông màu nâu vàng, mặt in hoa văn nổi, cắt ra có nhân và lòng đỏ trứng",Bánh trung thu; thu; trung; Trung,
+c028_l2,banh-trung-thu,,val,,,long,Bánh trung thu,"bánh nướng tròn hoặc vuông màu nâu vàng, mặt in hoa văn nổi, cắt ra có nhân và lòng đỏ trứng",Bánh trung thu; thu; trung; Trung,
+c029_s1,banh-u,,test,,,short,Bánh ú (bánh ú tro),"bánh hình chóp nhỏ gói lá buộc dây, bóc ra thấy nếp trong màu hổ phách hoặc vàng",Bánh ú (bánh ú tro); tro,
+c029_s2,banh-u,,val,,,short,Bánh ú (bánh ú tro),"bánh hình chóp nhỏ gói lá buộc dây, bóc ra thấy nếp trong màu hổ phách hoặc vàng",Bánh ú (bánh ú tro); tro,
+c029_l1,banh-u,,test,,,long,Bánh ú (bánh ú tro),"bánh hình chóp nhỏ gói lá buộc dây, bóc ra thấy nếp trong màu hổ phách hoặc vàng",Bánh ú (bánh ú tro); tro,
+c029_l2,banh-u,,val,,,long,Bánh ú (bánh ú tro),"bánh hình chóp nhỏ gói lá buộc dây, bóc ra thấy nếp trong màu hổ phách hoặc vàng",Bánh ú (bánh ú tro); tro,
+c030_s1,banh-xeo,,test,,,short,Bánh xèo,"bánh lớn mỏng giòn màu vàng gập đôi, nhân tôm thịt giá, ăn với xà lách, rau thơm và nước mắm",Bánh xèo; xèo,
+c030_s2,banh-xeo,,val,,,short,Bánh xèo,"bánh lớn mỏng giòn màu vàng gập đôi, nhân tôm thịt giá, ăn với xà lách, rau thơm và nước mắm",Bánh xèo; xèo,
+c030_l1,banh-xeo,,test,,,long,Bánh xèo,"bánh lớn mỏng giòn màu vàng gập đôi, nhân tôm thịt giá, ăn với xà lách, rau thơm và nước mắm",Bánh xèo; xèo,
+c030_l2,banh-xeo,,val,,,long,Bánh xèo,"bánh lớn mỏng giòn màu vàng gập đôi, nhân tôm thịt giá, ăn với xà lách, rau thơm và nước mắm",Bánh xèo; xèo,
+c031_s1,bo-kho,,val,,,short,Bò kho,"món hầm nước đỏ cam có miếng thịt bò, cà rốt, hoa hồi, sả, ăn với bánh mì hoặc hủ tiếu",Bò kho; bò; kho,
+c031_s2,bo-kho,,test,,,short,Bò kho,"món hầm nước đỏ cam có miếng thịt bò, cà rốt, hoa hồi, sả, ăn với bánh mì hoặc hủ tiếu",Bò kho; bò; kho,
+c031_l1,bo-kho,,test,,,long,Bò kho,"món hầm nước đỏ cam có miếng thịt bò, cà rốt, hoa hồi, sả, ăn với bánh mì hoặc hủ tiếu",Bò kho; bò; kho,
+c031_l2,bo-kho,,val,,,long,Bò kho,"món hầm nước đỏ cam có miếng thịt bò, cà rốt, hoa hồi, sả, ăn với bánh mì hoặc hủ tiếu",Bò kho; bò; kho,
+c032_s1,bo-la-lot,,test,,,short,Bò lá lốt,"những cuộn nhỏ quấn lá xanh sẫm nướng xém, rắc đậu phộng và mỡ hành, ăn với bún",Bò lá lốt; bò; lốt; lá lốt,"bo-nuong-la-lot, banh-hoi"
+c032_s2,bo-la-lot,,val,,,short,Bò lá lốt,"những cuộn nhỏ quấn lá xanh sẫm nướng xém, rắc đậu phộng và mỡ hành, ăn với bún",Bò lá lốt; bò; lốt; lá lốt,"bo-nuong-la-lot, banh-hoi"
+c032_l1,bo-la-lot,,val,,,long,Bò lá lốt,"những cuộn nhỏ quấn lá xanh sẫm nướng xém, rắc đậu phộng và mỡ hành, ăn với bún",Bò lá lốt; bò; lốt; lá lốt,"bo-nuong-la-lot, banh-hoi"
+c032_l2,bo-la-lot,,test,,,long,Bò lá lốt,"những cuộn nhỏ quấn lá xanh sẫm nướng xém, rắc đậu phộng và mỡ hành, ăn với bún",Bò lá lốt; bò; lốt; lá lốt,"bo-nuong-la-lot, banh-hoi"
+c033_s1,bo-luc-lac,,test,,,short,Bò lúc lắc,"thịt bò cắt khối vuông xào lửa lớn với ớt chuông, hành tây, bày trên xà lách cà chua, ăn với cơm hoặc khoai tây chiên",Bò lúc lắc; bò; lúc; lắc,nui-xao
+c033_s2,bo-luc-lac,,val,,,short,Bò lúc lắc,"thịt bò cắt khối vuông xào lửa lớn với ớt chuông, hành tây, bày trên xà lách cà chua, ăn với cơm hoặc khoai tây chiên",Bò lúc lắc; bò; lúc; lắc,nui-xao
+c033_l1,bo-luc-lac,,val,,,long,Bò lúc lắc,"thịt bò cắt khối vuông xào lửa lớn với ớt chuông, hành tây, bày trên xà lách cà chua, ăn với cơm hoặc khoai tây chiên",Bò lúc lắc; bò; lúc; lắc,nui-xao
+c033_l2,bo-luc-lac,,test,,,long,Bò lúc lắc,"thịt bò cắt khối vuông xào lửa lớn với ớt chuông, hành tây, bày trên xà lách cà chua, ăn với cơm hoặc khoai tây chiên",Bò lúc lắc; bò; lúc; lắc,nui-xao
+c034_s1,bo-ne,,test,,,short,Bò né,"đĩa gang hình bầu dục hoặc hình con bò, thịt bò bít tết, trứng ốp la, pa tê, hành tây, ăn với bánh mì",Bò né; bò; né,banh-mi-chao
+c034_s2,bo-ne,,val,,,short,Bò né,"đĩa gang hình bầu dục hoặc hình con bò, thịt bò bít tết, trứng ốp la, pa tê, hành tây, ăn với bánh mì",Bò né; bò; né,banh-mi-chao
+c034_l1,bo-ne,,val,,,long,Bò né,"đĩa gang hình bầu dục hoặc hình con bò, thịt bò bít tết, trứng ốp la, pa tê, hành tây, ăn với bánh mì",Bò né; bò; né,banh-mi-chao
+c034_l2,bo-ne,,test,,,long,Bò né,"đĩa gang hình bầu dục hoặc hình con bò, thịt bò bít tết, trứng ốp la, pa tê, hành tây, ăn với bánh mì",Bò né; bò; né,banh-mi-chao
+c035_s1,bo-nuong-la-lot,,val,,,short,Bò nướng lá lốt,"cuộn quấn lá xanh sẫm nướng trên vỉ hoặc xiên que, ăn với bánh tráng, bún và rau sống",Bò nướng lá lốt; bò; lốt; nướng; lá lốt,bo-la-lot
+c035_s2,bo-nuong-la-lot,,test,,,short,Bò nướng lá lốt,"cuộn quấn lá xanh sẫm nướng trên vỉ hoặc xiên que, ăn với bánh tráng, bún và rau sống",Bò nướng lá lốt; bò; lốt; nướng; lá lốt,bo-la-lot
+c035_l1,bo-nuong-la-lot,,test,,,long,Bò nướng lá lốt,"cuộn quấn lá xanh sẫm nướng trên vỉ hoặc xiên que, ăn với bánh tráng, bún và rau sống",Bò nướng lá lốt; bò; lốt; nướng; lá lốt,bo-la-lot
+c035_l2,bo-nuong-la-lot,,val,,,long,Bò nướng lá lốt,"cuộn quấn lá xanh sẫm nướng trên vỉ hoặc xiên que, ăn với bánh tráng, bún và rau sống",Bò nướng lá lốt; bò; lốt; nướng; lá lốt,bo-la-lot
+c036_s1,bun-bo-hue,,test,,,short,Bún bò Huế,"tô bún sợi to tròn, nước dùng đỏ cam có dầu ớt, thịt bò, giò heo, chả, ăn với chanh và rau",Bún bò Huế; bò; huế; Huế,"bun-rieu, pho"
+c036_s2,bun-bo-hue,,val,,,short,Bún bò Huế,"tô bún sợi to tròn, nước dùng đỏ cam có dầu ớt, thịt bò, giò heo, chả, ăn với chanh và rau",Bún bò Huế; bò; huế; Huế,"bun-rieu, pho"
+c036_l1,bun-bo-hue,,val,,,long,Bún bò Huế,"tô bún sợi to tròn, nước dùng đỏ cam có dầu ớt, thịt bò, giò heo, chả, ăn với chanh và rau",Bún bò Huế; bò; huế; Huế,"bun-rieu, pho"
+c036_l2,bun-bo-hue,,test,,,long,Bún bò Huế,"tô bún sợi to tròn, nước dùng đỏ cam có dầu ớt, thịt bò, giò heo, chả, ăn với chanh và rau",Bún bò Huế; bò; huế; Huế,"bun-rieu, pho"
+c037_s1,bun-cha,,val,,,short,Bún chả,"chả viên và thịt ba chỉ nướng ngâm trong bát nước mắm chua ngọt có đu đủ, ăn kèm bún trắng và rau sống",Bún chả; chả,
+c037_s2,bun-cha,,test,,,short,Bún chả,"chả viên và thịt ba chỉ nướng ngâm trong bát nước mắm chua ngọt có đu đủ, ăn kèm bún trắng và rau sống",Bún chả; chả,
+c037_l1,bun-cha,,val,,,long,Bún chả,"chả viên và thịt ba chỉ nướng ngâm trong bát nước mắm chua ngọt có đu đủ, ăn kèm bún trắng và rau sống",Bún chả; chả,
+c037_l2,bun-cha,,test,,,long,Bún chả,"chả viên và thịt ba chỉ nướng ngâm trong bát nước mắm chua ngọt có đu đủ, ăn kèm bún trắng và rau sống",Bún chả; chả,
+c038_s1,bun-cha-ca,,val,,,short,Bún chả cá,"tô bún nước dùng trong hơi đỏ cà chua, miếng chả cá chiên thái lát, cà chua và rau thơm",Bún chả cá; chả; cá,
+c038_s2,bun-cha-ca,,test,,,short,Bún chả cá,"tô bún nước dùng trong hơi đỏ cà chua, miếng chả cá chiên thái lát, cà chua và rau thơm",Bún chả cá; chả; cá,
+c038_l1,bun-cha-ca,,test,,,long,Bún chả cá,"tô bún nước dùng trong hơi đỏ cà chua, miếng chả cá chiên thái lát, cà chua và rau thơm",Bún chả cá; chả; cá,
+c038_l2,bun-cha-ca,,val,,,long,Bún chả cá,"tô bún nước dùng trong hơi đỏ cà chua, miếng chả cá chiên thái lát, cà chua và rau thơm",Bún chả cá; chả; cá,
+c039_s1,bun-dau-mam-tom,,test,,,short,Bún đậu mắm tôm,"mẹt có bún lá cắt miếng, đậu phụ rán vàng, thịt luộc, rau thơm và chén mắm tôm màu tím",Bún đậu mắm tôm; mắm; tôm; đậu; mắm tôm,
+c039_s2,bun-dau-mam-tom,,val,,,short,Bún đậu mắm tôm,"mẹt có bún lá cắt miếng, đậu phụ rán vàng, thịt luộc, rau thơm và chén mắm tôm màu tím",Bún đậu mắm tôm; mắm; tôm; đậu; mắm tôm,
+c039_l1,bun-dau-mam-tom,,test,,,long,Bún đậu mắm tôm,"mẹt có bún lá cắt miếng, đậu phụ rán vàng, thịt luộc, rau thơm và chén mắm tôm màu tím",Bún đậu mắm tôm; mắm; tôm; đậu; mắm tôm,
+c039_l2,bun-dau-mam-tom,,val,,,long,Bún đậu mắm tôm,"mẹt có bún lá cắt miếng, đậu phụ rán vàng, thịt luộc, rau thơm và chén mắm tôm màu tím",Bún đậu mắm tôm; mắm; tôm; đậu; mắm tôm,
+c040_s1,bun-mam,,val,,,short,Bún mắm,"tô bún nước dùng nâu đục đậm mùi mắm, có tôm, mực, heo quay, cà tím, ăn với nhiều rau sống",Bún mắm; mắm,bun-rieu
+c040_s2,bun-mam,,test,,,short,Bún mắm,"tô bún nước dùng nâu đục đậm mùi mắm, có tôm, mực, heo quay, cà tím, ăn với nhiều rau sống",Bún mắm; mắm,bun-rieu
+c040_l1,bun-mam,,val,,,long,Bún mắm,"tô bún nước dùng nâu đục đậm mùi mắm, có tôm, mực, heo quay, cà tím, ăn với nhiều rau sống",Bún mắm; mắm,bun-rieu
+c040_l2,bun-mam,,test,,,long,Bún mắm,"tô bún nước dùng nâu đục đậm mùi mắm, có tôm, mực, heo quay, cà tím, ăn với nhiều rau sống",Bún mắm; mắm,bun-rieu
+c041_s1,bun-rieu,,test,,,short,Bún riêu,"tô bún nước dùng đỏ cà chua, gạch cua vón thành mảng xốp, đậu phụ rán, huyết, ăn với rau",Bún riêu; riêu,"bun-bo-hue, bun-mam, banh-canh"
+c041_s2,bun-rieu,,val,,,short,Bún riêu,"tô bún nước dùng đỏ cà chua, gạch cua vón thành mảng xốp, đậu phụ rán, huyết, ăn với rau",Bún riêu; riêu,"bun-bo-hue, bun-mam, banh-canh"
+c041_l1,bun-rieu,,test,,,long,Bún riêu,"tô bún nước dùng đỏ cà chua, gạch cua vón thành mảng xốp, đậu phụ rán, huyết, ăn với rau",Bún riêu; riêu,"bun-bo-hue, bun-mam, banh-canh"
+c041_l2,bun-rieu,,val,,,long,Bún riêu,"tô bún nước dùng đỏ cà chua, gạch cua vón thành mảng xốp, đậu phụ rán, huyết, ăn với rau",Bún riêu; riêu,"bun-bo-hue, bun-mam, banh-canh"
+c042_s1,bun-thit-nuong,,test,,,short,Bún thịt nướng,"tô bún khô phủ thịt nướng, chả giò, rau sống, đồ chua, đậu phộng và nước mắm",Bún thịt nướng; nướng,
+c042_s2,bun-thit-nuong,,val,,,short,Bún thịt nướng,"tô bún khô phủ thịt nướng, chả giò, rau sống, đồ chua, đậu phộng và nước mắm",Bún thịt nướng; nướng,
+c042_l1,bun-thit-nuong,,test,,,long,Bún thịt nướng,"tô bún khô phủ thịt nướng, chả giò, rau sống, đồ chua, đậu phộng và nước mắm",Bún thịt nướng; nướng,
+c042_l2,bun-thit-nuong,,val,,,long,Bún thịt nướng,"tô bún khô phủ thịt nướng, chả giò, rau sống, đồ chua, đậu phộng và nước mắm",Bún thịt nướng; nướng,
+c043_s1,ca-kho-to,,val,,,short,Cá kho tộ,"khúc cá dày kho trong nồi đất nhỏ, nước kho nâu sẫm sánh bóng, rắc tiêu và ớt",Cá kho tộ; cá; kho; tộ,
+c043_s2,ca-kho-to,,test,,,short,Cá kho tộ,"khúc cá dày kho trong nồi đất nhỏ, nước kho nâu sẫm sánh bóng, rắc tiêu và ớt",Cá kho tộ; cá; kho; tộ,
+c043_l1,ca-kho-to,,val,,,long,Cá kho tộ,"khúc cá dày kho trong nồi đất nhỏ, nước kho nâu sẫm sánh bóng, rắc tiêu và ớt",Cá kho tộ; cá; kho; tộ,
+c043_l2,ca-kho-to,,test,,,long,Cá kho tộ,"khúc cá dày kho trong nồi đất nhỏ, nước kho nâu sẫm sánh bóng, rắc tiêu và ớt",Cá kho tộ; cá; kho; tộ,
+c044_s1,ca-loc-nuong,,val,,,short,Cá lóc nướng,"nguyên con cá dài nướng trên lửa hoặc rơm, da cháy xém, ăn với bánh tráng, bún và rau sống",Cá lóc nướng; cá; lóc; nướng,
+c044_s2,ca-loc-nuong,,test,,,short,Cá lóc nướng,"nguyên con cá dài nướng trên lửa hoặc rơm, da cháy xém, ăn với bánh tráng, bún và rau sống",Cá lóc nướng; cá; lóc; nướng,
+c044_l1,ca-loc-nuong,,test,,,long,Cá lóc nướng,"nguyên con cá dài nướng trên lửa hoặc rơm, da cháy xém, ăn với bánh tráng, bún và rau sống",Cá lóc nướng; cá; lóc; nướng,
+c044_l2,ca-loc-nuong,,val,,,long,Cá lóc nướng,"nguyên con cá dài nướng trên lửa hoặc rơm, da cháy xém, ăn với bánh tráng, bún và rau sống",Cá lóc nướng; cá; lóc; nướng,
+c045_s1,ca-muoi-xoi,,test,,,short,Cà muối xổi,"những quả nhỏ tròn màu trắng hoặc xanh nhạt, để nguyên hoặc bổ đôi, ngâm nước muối với ớt tỏi trong bát hoặc hũ",Cà muối xổi; cà; muối; xổi; cà pháo; muối xổi,
+c045_s2,ca-muoi-xoi,,val,,,short,Cà muối xổi,"những quả nhỏ tròn màu trắng hoặc xanh nhạt, để nguyên hoặc bổ đôi, ngâm nước muối với ớt tỏi trong bát hoặc hũ",Cà muối xổi; cà; muối; xổi; cà pháo; muối xổi,
+c045_l1,ca-muoi-xoi,,val,,,long,Cà muối xổi,"những quả nhỏ tròn màu trắng hoặc xanh nhạt, để nguyên hoặc bổ đôi, ngâm nước muối với ớt tỏi trong bát hoặc hũ",Cà muối xổi; cà; muối; xổi; cà pháo; muối xổi,
+c045_l2,ca-muoi-xoi,,test,,,long,Cà muối xổi,"những quả nhỏ tròn màu trắng hoặc xanh nhạt, để nguyên hoặc bổ đôi, ngâm nước muối với ớt tỏi trong bát hoặc hũ",Cà muối xổi; cà; muối; xổi; cà pháo; muối xổi,
+c046_s1,ca-ri-ga,,val,,,short,Cà ri gà,"cà ri nước vàng cam béo nước cốt dừa, có miếng gà, khoai tây, khoai lang, ăn với bánh mì hoặc bún",Cà ri gà; cà; gà; ri,
+c046_s2,ca-ri-ga,,test,,,short,Cà ri gà,"cà ri nước vàng cam béo nước cốt dừa, có miếng gà, khoai tây, khoai lang, ăn với bánh mì hoặc bún",Cà ri gà; cà; gà; ri,
+c046_l1,ca-ri-ga,,val,,,long,Cà ri gà,"cà ri nước vàng cam béo nước cốt dừa, có miếng gà, khoai tây, khoai lang, ăn với bánh mì hoặc bún",Cà ri gà; cà; gà; ri,
+c046_l2,ca-ri-ga,,test,,,long,Cà ri gà,"cà ri nước vàng cam béo nước cốt dừa, có miếng gà, khoai tây, khoai lang, ăn với bánh mì hoặc bún",Cà ri gà; cà; gà; ri,
+c047_s1,ca-sot-ca-chua,,val,,,short,Cá sốt cà chua,"miếng cá chiên phủ nước sốt đỏ sánh, hành lá và cà chua thái miếng, bày trên đĩa",Cá sốt cà chua; chua; cà; cá; sốt,
+c047_s2,ca-sot-ca-chua,,test,,,short,Cá sốt cà chua,"miếng cá chiên phủ nước sốt đỏ sánh, hành lá và cà chua thái miếng, bày trên đĩa",Cá sốt cà chua; chua; cà; cá; sốt,
+c047_l1,ca-sot-ca-chua,,test,,,long,Cá sốt cà chua,"miếng cá chiên phủ nước sốt đỏ sánh, hành lá và cà chua thái miếng, bày trên đĩa",Cá sốt cà chua; chua; cà; cá; sốt,
+c047_l2,ca-sot-ca-chua,,val,,,long,Cá sốt cà chua,"miếng cá chiên phủ nước sốt đỏ sánh, hành lá và cà chua thái miếng, bày trên đĩa",Cá sốt cà chua; chua; cà; cá; sốt,
+c048_s1,canh-bi-do,,val,,,short,Canh bí đỏ,"canh nước trong có miếng bí màu cam, có khi thêm thịt băm hoặc tôm và hành lá",Canh bí đỏ; bí; đỏ,
+c048_s2,canh-bi-do,,test,,,short,Canh bí đỏ,"canh nước trong có miếng bí màu cam, có khi thêm thịt băm hoặc tôm và hành lá",Canh bí đỏ; bí; đỏ,
+c048_l1,canh-bi-do,,test,,,long,Canh bí đỏ,"canh nước trong có miếng bí màu cam, có khi thêm thịt băm hoặc tôm và hành lá",Canh bí đỏ; bí; đỏ,
+c048_l2,canh-bi-do,,val,,,long,Canh bí đỏ,"canh nước trong có miếng bí màu cam, có khi thêm thịt băm hoặc tôm và hành lá",Canh bí đỏ; bí; đỏ,
+c049_s1,canh-chua,,test,,,short,Canh chua,"canh nước trong hơi đỏ, có cá, dứa, cà chua, đậu bắp, giá, bạc hà và rau ngổ",Canh chua; chua,
+c049_s2,canh-chua,,val,,,short,Canh chua,"canh nước trong hơi đỏ, có cá, dứa, cà chua, đậu bắp, giá, bạc hà và rau ngổ",Canh chua; chua,
+c049_l1,canh-chua,,test,,,long,Canh chua,"canh nước trong hơi đỏ, có cá, dứa, cà chua, đậu bắp, giá, bạc hà và rau ngổ",Canh chua; chua,
+c049_l2,canh-chua,,val,,,long,Canh chua,"canh nước trong hơi đỏ, có cá, dứa, cà chua, đậu bắp, giá, bạc hà và rau ngổ",Canh chua; chua,
+c050_s1,canh-cua,,test,,,short,Canh cua (rau đay mồng tơi),"canh màu xanh nhạt có rau lá xanh đậm, gạch cua nâu nổi thành mảng, thường có mướp",Canh cua (rau đay mồng tơi); cua; mồng; rau; tơi; đay,
+c050_s2,canh-cua,,val,,,short,Canh cua (rau đay mồng tơi),"canh màu xanh nhạt có rau lá xanh đậm, gạch cua nâu nổi thành mảng, thường có mướp",Canh cua (rau đay mồng tơi); cua; mồng; rau; tơi; đay,
+c050_l1,canh-cua,,val,,,long,Canh cua (rau đay mồng tơi),"canh màu xanh nhạt có rau lá xanh đậm, gạch cua nâu nổi thành mảng, thường có mướp",Canh cua (rau đay mồng tơi); cua; mồng; rau; tơi; đay,
+c050_l2,canh-cua,,test,,,long,Canh cua (rau đay mồng tơi),"canh màu xanh nhạt có rau lá xanh đậm, gạch cua nâu nổi thành mảng, thường có mướp",Canh cua (rau đay mồng tơi); cua; mồng; rau; tơi; đay,
+c051_s1,canh-kho-hoa,,test,,,short,Canh khổ qua nhồi thịt,"canh nước trong có khúc quả xanh nhạt sần sùi, ruột đầy thịt băm, rắc hành lá",Canh khổ qua nhồi thịt; khổ; nhồi; qua; khổ qua; mướp đắng,
+c051_s2,canh-kho-hoa,,val,,,short,Canh khổ qua nhồi thịt,"canh nước trong có khúc quả xanh nhạt sần sùi, ruột đầy thịt băm, rắc hành lá",Canh khổ qua nhồi thịt; khổ; nhồi; qua; khổ qua; mướp đắng,
+c051_l1,canh-kho-hoa,,val,,,long,Canh khổ qua nhồi thịt,"canh nước trong có khúc quả xanh nhạt sần sùi, ruột đầy thịt băm, rắc hành lá",Canh khổ qua nhồi thịt; khổ; nhồi; qua; khổ qua; mướp đắng,
+c051_l2,canh-kho-hoa,,test,,,long,Canh khổ qua nhồi thịt,"canh nước trong có khúc quả xanh nhạt sần sùi, ruột đầy thịt băm, rắc hành lá",Canh khổ qua nhồi thịt; khổ; nhồi; qua; khổ qua; mướp đắng,
+c052_s1,canh-khoai-tim,,val,,,short,Canh khoai mỡ,"canh sánh màu tím rực, củ nghiền nhuyễn, có tôm hoặc thịt băm và rau ngò om",Canh khoai mỡ; khoai; mỡ,
+c052_s2,canh-khoai-tim,,test,,,short,Canh khoai mỡ,"canh sánh màu tím rực, củ nghiền nhuyễn, có tôm hoặc thịt băm và rau ngò om",Canh khoai mỡ; khoai; mỡ,
+c052_l1,canh-khoai-tim,,test,,,long,Canh khoai mỡ,"canh sánh màu tím rực, củ nghiền nhuyễn, có tôm hoặc thịt băm và rau ngò om",Canh khoai mỡ; khoai; mỡ,
+c052_l2,canh-khoai-tim,,val,,,long,Canh khoai mỡ,"canh sánh màu tím rực, củ nghiền nhuyễn, có tôm hoặc thịt băm và rau ngò om",Canh khoai mỡ; khoai; mỡ,
+c053_s1,cao-lau,,test,,,short,Cao lầu,"sợi mì dày dai màu vàng nâu, ít nước sốt, thịt xá xíu thái lát, bánh đa giòn, giá và rau sống",Cao lầu; cao; lầu,mi-quang
+c053_s2,cao-lau,,val,,,short,Cao lầu,"sợi mì dày dai màu vàng nâu, ít nước sốt, thịt xá xíu thái lát, bánh đa giòn, giá và rau sống",Cao lầu; cao; lầu,mi-quang
+c053_l1,cao-lau,,val,,,long,Cao lầu,"sợi mì dày dai màu vàng nâu, ít nước sốt, thịt xá xíu thái lát, bánh đa giòn, giá và rau sống",Cao lầu; cao; lầu,mi-quang
+c053_l2,cao-lau,,test,,,long,Cao lầu,"sợi mì dày dai màu vàng nâu, ít nước sốt, thịt xá xíu thái lát, bánh đa giòn, giá và rau sống",Cao lầu; cao; lầu,mi-quang
+c054_s1,cha-ca-la-vong,,test,,,short,Chả cá Lã Vọng,"miếng cá vàng nghệ chiên trong chảo với nhiều thì là và hành, ăn với bún, đậu phộng và mắm tôm",Chả cá Lã Vọng; chả; cá; lã; vọng; chả cá; Lã Vọng,
+c054_s2,cha-ca-la-vong,,val,,,short,Chả cá Lã Vọng,"miếng cá vàng nghệ chiên trong chảo với nhiều thì là và hành, ăn với bún, đậu phộng và mắm tôm",Chả cá Lã Vọng; chả; cá; lã; vọng; chả cá; Lã Vọng,
+c054_l1,cha-ca-la-vong,,test,,,long,Chả cá Lã Vọng,"miếng cá vàng nghệ chiên trong chảo với nhiều thì là và hành, ăn với bún, đậu phộng và mắm tôm",Chả cá Lã Vọng; chả; cá; lã; vọng; chả cá; Lã Vọng,
+c054_l2,cha-ca-la-vong,,val,,,long,Chả cá Lã Vọng,"miếng cá vàng nghệ chiên trong chảo với nhiều thì là và hành, ăn với bún, đậu phộng và mắm tôm",Chả cá Lã Vọng; chả; cá; lã; vọng; chả cá; Lã Vọng,
+c055_s1,cha-com,,test,,,short,Chả cốm,"chả thịt chiên áo hạt cốm xanh, mặt vàng nâu lốm đốm xanh",Chả cốm; chả; cốm,
+c055_s2,cha-com,,val,,,short,Chả cốm,"chả thịt chiên áo hạt cốm xanh, mặt vàng nâu lốm đốm xanh",Chả cốm; chả; cốm,
+c055_l1,cha-com,,test,,,long,Chả cốm,"chả thịt chiên áo hạt cốm xanh, mặt vàng nâu lốm đốm xanh",Chả cốm; chả; cốm,
+c055_l2,cha-com,,val,,,long,Chả cốm,"chả thịt chiên áo hạt cốm xanh, mặt vàng nâu lốm đốm xanh",Chả cốm; chả; cốm,
+c056_s1,cha-lui,,val,,,short,Chả lụi,"thịt băm quấn vào que sả hoặc que tre nướng vàng, ăn với bánh tráng, rau sống và tương đậu phộng",Chả lụi; chả; lụi,nem-nuong-nha-trang
+c056_s2,cha-lui,,test,,,short,Chả lụi,"thịt băm quấn vào que sả hoặc que tre nướng vàng, ăn với bánh tráng, rau sống và tương đậu phộng",Chả lụi; chả; lụi,nem-nuong-nha-trang
+c056_l1,cha-lui,,val,,,long,Chả lụi,"thịt băm quấn vào que sả hoặc que tre nướng vàng, ăn với bánh tráng, rau sống và tương đậu phộng",Chả lụi; chả; lụi,nem-nuong-nha-trang
+c056_l2,cha-lui,,test,,,long,Chả lụi,"thịt băm quấn vào que sả hoặc que tre nướng vàng, ăn với bánh tráng, rau sống và tương đậu phộng",Chả lụi; chả; lụi,nem-nuong-nha-trang
+c057_s1,chao-long,,val,,,short,Cháo lòng,"tô gạo ninh nhừ sánh trắng, có ruột heo, gan, dồi, huyết thái lát, hành lá, ăn với quẩy",Cháo lòng; lòng,
+c057_s2,chao-long,,test,,,short,Cháo lòng,"tô gạo ninh nhừ sánh trắng, có ruột heo, gan, dồi, huyết thái lát, hành lá, ăn với quẩy",Cháo lòng; lòng,
+c057_l1,chao-long,,val,,,long,Cháo lòng,"tô gạo ninh nhừ sánh trắng, có ruột heo, gan, dồi, huyết thái lát, hành lá, ăn với quẩy",Cháo lòng; lòng,
+c057_l2,chao-long,,test,,,long,Cháo lòng,"tô gạo ninh nhừ sánh trắng, có ruột heo, gan, dồi, huyết thái lát, hành lá, ăn với quẩy",Cháo lòng; lòng,
+c058_s1,chao-vit,,val,,,short,Vịt nấu chao,"nồi lẩu nước đỏ cam béo, có thịt vịt, khoai môn, rau muống, ăn với bún",Vịt nấu chao; chao; vịt,
+c058_s2,chao-vit,,test,,,short,Vịt nấu chao,"nồi lẩu nước đỏ cam béo, có thịt vịt, khoai môn, rau muống, ăn với bún",Vịt nấu chao; chao; vịt,
+c058_l1,chao-vit,,test,,,long,Vịt nấu chao,"nồi lẩu nước đỏ cam béo, có thịt vịt, khoai môn, rau muống, ăn với bún",Vịt nấu chao; chao; vịt,
+c058_l2,chao-vit,,val,,,long,Vịt nấu chao,"nồi lẩu nước đỏ cam béo, có thịt vịt, khoai môn, rau muống, ăn với bún",Vịt nấu chao; chao; vịt,
+c059_s1,com-chay-cha-bong,,val,,,short,Cơm cháy chà bông,"miếng gạo nén chiên vàng giòn, phủ lớp thịt xé sợi nâu xốp, mỡ hành và ớt",Cơm cháy chà bông; bông; chà; cháy; cơm cháy; chà bông; ruốc,
+c059_s2,com-chay-cha-bong,,test,,,short,Cơm cháy chà bông,"miếng gạo nén chiên vàng giòn, phủ lớp thịt xé sợi nâu xốp, mỡ hành và ớt",Cơm cháy chà bông; bông; chà; cháy; cơm cháy; chà bông; ruốc,
+c059_l1,com-chay-cha-bong,,val,,,long,Cơm cháy chà bông,"miếng gạo nén chiên vàng giòn, phủ lớp thịt xé sợi nâu xốp, mỡ hành và ớt",Cơm cháy chà bông; bông; chà; cháy; cơm cháy; chà bông; ruốc,
+c059_l2,com-chay-cha-bong,,test,,,long,Cơm cháy chà bông,"miếng gạo nén chiên vàng giòn, phủ lớp thịt xé sợi nâu xốp, mỡ hành và ớt",Cơm cháy chà bông; bông; chà; cháy; cơm cháy; chà bông; ruốc,
+c060_s1,com-chien,,val,,,short,Cơm chiên,"đĩa cơm rang vàng có trứng, cà rốt, đậu Hà Lan, lạp xưởng hoặc tôm và hành lá",Cơm chiên; chiên,
+c060_s2,com-chien,,test,,,short,Cơm chiên,"đĩa cơm rang vàng có trứng, cà rốt, đậu Hà Lan, lạp xưởng hoặc tôm và hành lá",Cơm chiên; chiên,
+c060_l1,com-chien,,val,,,long,Cơm chiên,"đĩa cơm rang vàng có trứng, cà rốt, đậu Hà Lan, lạp xưởng hoặc tôm và hành lá",Cơm chiên; chiên,
+c060_l2,com-chien,,test,,,long,Cơm chiên,"đĩa cơm rang vàng có trứng, cà rốt, đậu Hà Lan, lạp xưởng hoặc tôm và hành lá",Cơm chiên; chiên,
+c061_s1,com-ga-xoi-mo,,test,,,short,Cơm gà xối mỡ,"đùi gà chiên giòn vàng ruộm nguyên miếng, bên cạnh cơm chiên màu đỏ cam, dưa leo và cà chua",Cơm gà xối mỡ; gà; mỡ; xối,
+c061_s2,com-ga-xoi-mo,,val,,,short,Cơm gà xối mỡ,"đùi gà chiên giòn vàng ruộm nguyên miếng, bên cạnh cơm chiên màu đỏ cam, dưa leo và cà chua",Cơm gà xối mỡ; gà; mỡ; xối,
+c061_l1,com-ga-xoi-mo,,test,,,long,Cơm gà xối mỡ,"đùi gà chiên giòn vàng ruộm nguyên miếng, bên cạnh cơm chiên màu đỏ cam, dưa leo và cà chua",Cơm gà xối mỡ; gà; mỡ; xối,
+c061_l2,com-ga-xoi-mo,,val,,,long,Cơm gà xối mỡ,"đùi gà chiên giòn vàng ruộm nguyên miếng, bên cạnh cơm chiên màu đỏ cam, dưa leo và cà chua",Cơm gà xối mỡ; gà; mỡ; xối,
+c062_s1,com-lam,,test,,,short,Cơm lam,"ống tre nướng cháy đen bên ngoài, chẻ ra thấy nếp trắng bọc lớp màng tre mỏng",Cơm lam; lam,
+c062_s2,com-lam,,val,,,short,Cơm lam,"ống tre nướng cháy đen bên ngoài, chẻ ra thấy nếp trắng bọc lớp màng tre mỏng",Cơm lam; lam,
+c062_l1,com-lam,,test,,,long,Cơm lam,"ống tre nướng cháy đen bên ngoài, chẻ ra thấy nếp trắng bọc lớp màng tre mỏng",Cơm lam; lam,
+c062_l2,com-lam,,val,,,long,Cơm lam,"ống tre nướng cháy đen bên ngoài, chẻ ra thấy nếp trắng bọc lớp màng tre mỏng",Cơm lam; lam,
+c063_s1,com-rang-dua-bo,,val,,,short,Cơm rang dưa bò,cơm rang phủ thịt bò xào với dưa cải chua vàng xanh và cà chua,Cơm rang dưa bò; bò; dưa; rang,
+c063_s2,com-rang-dua-bo,,test,,,short,Cơm rang dưa bò,cơm rang phủ thịt bò xào với dưa cải chua vàng xanh và cà chua,Cơm rang dưa bò; bò; dưa; rang,
+c063_l1,com-rang-dua-bo,,val,,,long,Cơm rang dưa bò,cơm rang phủ thịt bò xào với dưa cải chua vàng xanh và cà chua,Cơm rang dưa bò; bò; dưa; rang,
+c063_l2,com-rang-dua-bo,,test,,,long,Cơm rang dưa bò,cơm rang phủ thịt bò xào với dưa cải chua vàng xanh và cà chua,Cơm rang dưa bò; bò; dưa; rang,
+c064_s1,com-tam,,test,,,short,Cơm tấm,"đĩa cơm hạt nhỏ, sườn nướng, bì, chả trứng hấp, trứng ốp la, đồ chua và nước mắm",Cơm tấm; tấm,
+c064_s2,com-tam,,val,,,short,Cơm tấm,"đĩa cơm hạt nhỏ, sườn nướng, bì, chả trứng hấp, trứng ốp la, đồ chua và nước mắm",Cơm tấm; tấm,
+c064_l1,com-tam,,val,,,long,Cơm tấm,"đĩa cơm hạt nhỏ, sườn nướng, bì, chả trứng hấp, trứng ốp la, đồ chua và nước mắm",Cơm tấm; tấm,
+c064_l2,com-tam,,test,,,long,Cơm tấm,"đĩa cơm hạt nhỏ, sườn nướng, bì, chả trứng hấp, trứng ốp la, đồ chua và nước mắm",Cơm tấm; tấm,
+c065_s1,cua-hap-bia,,test,,,short,Cua hấp bia,"những con cua đỏ cam nguyên con hấp chín, thường bẻ mai, có sả và chén muối tiêu chanh",Cua hấp bia; bia; cua; hấp,
+c065_s2,cua-hap-bia,,val,,,short,Cua hấp bia,"những con cua đỏ cam nguyên con hấp chín, thường bẻ mai, có sả và chén muối tiêu chanh",Cua hấp bia; bia; cua; hấp,
+c065_l1,cua-hap-bia,,test,,,long,Cua hấp bia,"những con cua đỏ cam nguyên con hấp chín, thường bẻ mai, có sả và chén muối tiêu chanh",Cua hấp bia; bia; cua; hấp,
+c065_l2,cua-hap-bia,,val,,,long,Cua hấp bia,"những con cua đỏ cam nguyên con hấp chín, thường bẻ mai, có sả và chén muối tiêu chanh",Cua hấp bia; bia; cua; hấp,
+c066_s1,cut-lon-xao-me,,test,,,short,Cút lộn xào me,"trứng cút đã bóc vỏ áo nước sốt nâu cam sánh bóng, rắc đậu phộng và rau răm",Cút lộn xào me; cút; lộn; me; xào; cút lộn,
+c066_s2,cut-lon-xao-me,,val,,,short,Cút lộn xào me,"trứng cút đã bóc vỏ áo nước sốt nâu cam sánh bóng, rắc đậu phộng và rau răm",Cút lộn xào me; cút; lộn; me; xào; cút lộn,
+c066_l1,cut-lon-xao-me,,test,,,long,Cút lộn xào me,"trứng cút đã bóc vỏ áo nước sốt nâu cam sánh bóng, rắc đậu phộng và rau răm",Cút lộn xào me; cút; lộn; me; xào; cút lộn,
+c066_l2,cut-lon-xao-me,,val,,,long,Cút lộn xào me,"trứng cút đã bóc vỏ áo nước sốt nâu cam sánh bóng, rắc đậu phộng và rau răm",Cút lộn xào me; cút; lộn; me; xào; cút lộn,
+c067_s1,ga-chien-nuoc-mam,,val,,,short,Gà chiên nước mắm,"cánh gà rán phủ lớp sốt vàng nâu bóng, có tỏi phi và ớt",Gà chiên nước mắm; chiên; gà; mắm,
+c067_s2,ga-chien-nuoc-mam,,test,,,short,Gà chiên nước mắm,"cánh gà rán phủ lớp sốt vàng nâu bóng, có tỏi phi và ớt",Gà chiên nước mắm; chiên; gà; mắm,
+c067_l1,ga-chien-nuoc-mam,,test,,,long,Gà chiên nước mắm,"cánh gà rán phủ lớp sốt vàng nâu bóng, có tỏi phi và ớt",Gà chiên nước mắm; chiên; gà; mắm,
+c067_l2,ga-chien-nuoc-mam,,val,,,long,Gà chiên nước mắm,"cánh gà rán phủ lớp sốt vàng nâu bóng, có tỏi phi và ớt",Gà chiên nước mắm; chiên; gà; mắm,
+c068_s1,ga-hap-la-chanh,,val,,,short,Gà hấp lá chanh,"miếng gà da vàng nhạt luộc hấp, rắc lá xanh thái chỉ, ăn với muối tiêu chanh",Gà hấp lá chanh; chanh; gà; hấp,
+c068_s2,ga-hap-la-chanh,,test,,,short,Gà hấp lá chanh,"miếng gà da vàng nhạt luộc hấp, rắc lá xanh thái chỉ, ăn với muối tiêu chanh",Gà hấp lá chanh; chanh; gà; hấp,
+c068_l1,ga-hap-la-chanh,,val,,,long,Gà hấp lá chanh,"miếng gà da vàng nhạt luộc hấp, rắc lá xanh thái chỉ, ăn với muối tiêu chanh",Gà hấp lá chanh; chanh; gà; hấp,
+c068_l2,ga-hap-la-chanh,,test,,,long,Gà hấp lá chanh,"miếng gà da vàng nhạt luộc hấp, rắc lá xanh thái chỉ, ăn với muối tiêu chanh",Gà hấp lá chanh; chanh; gà; hấp,
+c069_s1,goi-ca-chich,,test,,,short,Gỏi cá trích,"cá sống thái mỏng da bạc trộn hành tây, dừa nạo, rau thơm, đậu phộng, cuốn bánh tráng ăn",Gỏi cá trích; cá; gỏi; trích; cá trích,
+c069_s2,goi-ca-chich,,val,,,short,Gỏi cá trích,"cá sống thái mỏng da bạc trộn hành tây, dừa nạo, rau thơm, đậu phộng, cuốn bánh tráng ăn",Gỏi cá trích; cá; gỏi; trích; cá trích,
+c069_l1,goi-ca-chich,,val,,,long,Gỏi cá trích,"cá sống thái mỏng da bạc trộn hành tây, dừa nạo, rau thơm, đậu phộng, cuốn bánh tráng ăn",Gỏi cá trích; cá; gỏi; trích; cá trích,
+c069_l2,goi-ca-chich,,test,,,long,Gỏi cá trích,"cá sống thái mỏng da bạc trộn hành tây, dừa nạo, rau thơm, đậu phộng, cuốn bánh tráng ăn",Gỏi cá trích; cá; gỏi; trích; cá trích,
+c070_s1,goi-cuon,,val,,,short,Gỏi cuốn,"lá bánh tráng trong suốt bọc tôm hồng, xà lách, bún bên trong, chấm tương đậu phộng",Gỏi cuốn; cuốn; gỏi; gỏi cuốn,
+c070_s2,goi-cuon,,test,,,short,Gỏi cuốn,"lá bánh tráng trong suốt bọc tôm hồng, xà lách, bún bên trong, chấm tương đậu phộng",Gỏi cuốn; cuốn; gỏi; gỏi cuốn,
+c070_l1,goi-cuon,,test,,,long,Gỏi cuốn,"lá bánh tráng trong suốt bọc tôm hồng, xà lách, bún bên trong, chấm tương đậu phộng",Gỏi cuốn; cuốn; gỏi; gỏi cuốn,
+c070_l2,goi-cuon,,val,,,long,Gỏi cuốn,"lá bánh tráng trong suốt bọc tôm hồng, xà lách, bún bên trong, chấm tương đậu phộng",Gỏi cuốn; cuốn; gỏi; gỏi cuốn,
+c071_s1,hu-tieu,,test,,,short,Hủ tiếu,"tô sợi nhỏ trắng trong dai, nước dùng trong, có tôm, thịt thái lát, thịt băm, trứng cút, hẹ",Hủ tiếu; hủ; tiếu,"banh-canh, pho"
+c071_s2,hu-tieu,,val,,,short,Hủ tiếu,"tô sợi nhỏ trắng trong dai, nước dùng trong, có tôm, thịt thái lát, thịt băm, trứng cút, hẹ",Hủ tiếu; hủ; tiếu,"banh-canh, pho"
+c071_l1,hu-tieu,,test,,,long,Hủ tiếu,"tô sợi nhỏ trắng trong dai, nước dùng trong, có tôm, thịt thái lát, thịt băm, trứng cút, hẹ",Hủ tiếu; hủ; tiếu,"banh-canh, pho"
+c071_l2,hu-tieu,,val,,,long,Hủ tiếu,"tô sợi nhỏ trắng trong dai, nước dùng trong, có tôm, thịt thái lát, thịt băm, trứng cút, hẹ",Hủ tiếu; hủ; tiếu,"banh-canh, pho"
+c072_s1,khau-nhuc,,test,,,short,Khâu nhục,"lát thịt ba chỉ dày bì nâu sẫm bóng, xếp xen khoai môn trong bát, rưới nước sốt",Khâu nhục; khâu; nhục,
+c072_s2,khau-nhuc,,val,,,short,Khâu nhục,"lát thịt ba chỉ dày bì nâu sẫm bóng, xếp xen khoai môn trong bát, rưới nước sốt",Khâu nhục; khâu; nhục,
+c072_l1,khau-nhuc,,test,,,long,Khâu nhục,"lát thịt ba chỉ dày bì nâu sẫm bóng, xếp xen khoai môn trong bát, rưới nước sốt",Khâu nhục; khâu; nhục,
+c072_l2,khau-nhuc,,val,,,long,Khâu nhục,"lát thịt ba chỉ dày bì nâu sẫm bóng, xếp xen khoai môn trong bát, rưới nước sốt",Khâu nhục; khâu; nhục,
+c073_s1,kho-muc-nuong,,val,,,short,Khô mực nướng,"con khô nướng trên than, xé thành sợi trắng vàng, chấm tương ớt",Khô mực nướng; khô; mực; nướng,
+c073_s2,kho-muc-nuong,,test,,,short,Khô mực nướng,"con khô nướng trên than, xé thành sợi trắng vàng, chấm tương ớt",Khô mực nướng; khô; mực; nướng,
+c073_l1,kho-muc-nuong,,val,,,long,Khô mực nướng,"con khô nướng trên than, xé thành sợi trắng vàng, chấm tương ớt",Khô mực nướng; khô; mực; nướng,
+c073_l2,kho-muc-nuong,,test,,,long,Khô mực nướng,"con khô nướng trên than, xé thành sợi trắng vàng, chấm tương ớt",Khô mực nướng; khô; mực; nướng,
+c074_s1,kho-quet,,test,,,short,Kho quẹt,"nồi đất nhỏ nước kho nâu sẫm sệt có tóp mỡ, tép khô, xung quanh là rau củ luộc",Kho quẹt; kho; quẹt,
+c074_s2,kho-quet,,val,,,short,Kho quẹt,"nồi đất nhỏ nước kho nâu sẫm sệt có tóp mỡ, tép khô, xung quanh là rau củ luộc",Kho quẹt; kho; quẹt,
+c074_l1,kho-quet,,test,,,long,Kho quẹt,"nồi đất nhỏ nước kho nâu sẫm sệt có tóp mỡ, tép khô, xung quanh là rau củ luộc",Kho quẹt; kho; quẹt,
+c074_l2,kho-quet,,val,,,long,Kho quẹt,"nồi đất nhỏ nước kho nâu sẫm sệt có tóp mỡ, tép khô, xung quanh là rau củ luộc",Kho quẹt; kho; quẹt,
+c075_s1,lap-xuong,,val,,,short,Lạp xưởng,"những khúc xúc xích đỏ sẫm bóng, để nguyên hoặc thái xéo, có khi còn trong bao bì",Lạp xưởng; lạp; xưởng,
+c075_s2,lap-xuong,,test,,,short,Lạp xưởng,"những khúc xúc xích đỏ sẫm bóng, để nguyên hoặc thái xéo, có khi còn trong bao bì",Lạp xưởng; lạp; xưởng,
+c075_l1,lap-xuong,,test,,,long,Lạp xưởng,"những khúc xúc xích đỏ sẫm bóng, để nguyên hoặc thái xéo, có khi còn trong bao bì",Lạp xưởng; lạp; xưởng,
+c075_l2,lap-xuong,,val,,,long,Lạp xưởng,"những khúc xúc xích đỏ sẫm bóng, để nguyên hoặc thái xéo, có khi còn trong bao bì",Lạp xưởng; lạp; xưởng,
+c076_s1,luon-om-chuoi-dau,,test,,,short,Lươn om chuối đậu,"món om vàng nghệ có khúc cá thân tròn da sẫm cắt ngắn, chuối xanh, đậu phụ rán và tía tô",Lươn om chuối đậu; chuối; lươn; om; đậu,baba-nau-chuoi-dau
+c076_s2,luon-om-chuoi-dau,,val,,,short,Lươn om chuối đậu,"món om vàng nghệ có khúc cá thân tròn da sẫm cắt ngắn, chuối xanh, đậu phụ rán và tía tô",Lươn om chuối đậu; chuối; lươn; om; đậu,baba-nau-chuoi-dau
+c076_l1,luon-om-chuoi-dau,,test,,,long,Lươn om chuối đậu,"món om vàng nghệ có khúc cá thân tròn da sẫm cắt ngắn, chuối xanh, đậu phụ rán và tía tô",Lươn om chuối đậu; chuối; lươn; om; đậu,baba-nau-chuoi-dau
+c076_l2,luon-om-chuoi-dau,,val,,,long,Lươn om chuối đậu,"món om vàng nghệ có khúc cá thân tròn da sẫm cắt ngắn, chuối xanh, đậu phụ rán và tía tô",Lươn om chuối đậu; chuối; lươn; om; đậu,baba-nau-chuoi-dau
+c077_s1,luon-xao-xa-ot,,val,,,short,Lươn xào sả ớt,"khúc cá thân tròn da nâu sẫm xào với sả băm, ớt đỏ và rau răm",Lươn xào sả ớt; lươn; sả; xào; ớt,
+c077_s2,luon-xao-xa-ot,,test,,,short,Lươn xào sả ớt,"khúc cá thân tròn da nâu sẫm xào với sả băm, ớt đỏ và rau răm",Lươn xào sả ớt; lươn; sả; xào; ớt,
+c077_l1,luon-xao-xa-ot,,test,,,long,Lươn xào sả ớt,"khúc cá thân tròn da nâu sẫm xào với sả băm, ớt đỏ và rau răm",Lươn xào sả ớt; lươn; sả; xào; ớt,
+c077_l2,luon-xao-xa-ot,,val,,,long,Lươn xào sả ớt,"khúc cá thân tròn da nâu sẫm xào với sả băm, ớt đỏ và rau răm",Lươn xào sả ớt; lươn; sả; xào; ớt,
+c078_s1,mam-chung,,val,,,short,Mắm chưng,"bát hấp, mặt phủ lòng đỏ trứng vàng cam, ăn với rau sống",Mắm chưng; chưng; mắm,
+c078_s2,mam-chung,,test,,,short,Mắm chưng,"bát hấp, mặt phủ lòng đỏ trứng vàng cam, ăn với rau sống",Mắm chưng; chưng; mắm,
+c078_l1,mam-chung,,val,,,long,Mắm chưng,"bát hấp, mặt phủ lòng đỏ trứng vàng cam, ăn với rau sống",Mắm chưng; chưng; mắm,
+c078_l2,mam-chung,,test,,,long,Mắm chưng,"bát hấp, mặt phủ lòng đỏ trứng vàng cam, ăn với rau sống",Mắm chưng; chưng; mắm,
+c079_s1,mam-tep-chung-thit,,test,,,short,Mắm tép chưng thịt,"hỗn hợp thịt băm và tép nhỏ màu nâu đỏ tơi, thường đựng trong hũ hoặc bát, có ớt",Mắm tép chưng thịt; chưng; mắm; tép,
+c079_s2,mam-tep-chung-thit,,val,,,short,Mắm tép chưng thịt,"hỗn hợp thịt băm và tép nhỏ màu nâu đỏ tơi, thường đựng trong hũ hoặc bát, có ớt",Mắm tép chưng thịt; chưng; mắm; tép,
+c079_l1,mam-tep-chung-thit,,val,,,long,Mắm tép chưng thịt,"hỗn hợp thịt băm và tép nhỏ màu nâu đỏ tơi, thường đựng trong hũ hoặc bát, có ớt",Mắm tép chưng thịt; chưng; mắm; tép,
+c079_l2,mam-tep-chung-thit,,test,,,long,Mắm tép chưng thịt,"hỗn hợp thịt băm và tép nhỏ màu nâu đỏ tơi, thường đựng trong hũ hoặc bát, có ớt",Mắm tép chưng thịt; chưng; mắm; tép,
+c080_s1,mi-quang,,test,,,short,Mì Quảng,"tô sợi to dẹt màu vàng, ít nước, có tôm, thịt, trứng cút, đậu phộng, bánh tráng mè và rau sống",Mì Quảng; quảng; Quảng,cao-lau
+c080_s2,mi-quang,,val,,,short,Mì Quảng,"tô sợi to dẹt màu vàng, ít nước, có tôm, thịt, trứng cút, đậu phộng, bánh tráng mè và rau sống",Mì Quảng; quảng; Quảng,cao-lau
+c080_l1,mi-quang,,val,,,long,Mì Quảng,"tô sợi to dẹt màu vàng, ít nước, có tôm, thịt, trứng cút, đậu phộng, bánh tráng mè và rau sống",Mì Quảng; quảng; Quảng,cao-lau
+c080_l2,mi-quang,,test,,,long,Mì Quảng,"tô sợi to dẹt màu vàng, ít nước, có tôm, thịt, trứng cút, đậu phộng, bánh tráng mè và rau sống",Mì Quảng; quảng; Quảng,cao-lau
+c081_s1,mi-xao-gion,,val,,,short,Mì xào giòn,"ổ mì chiên vàng giòn, phủ hải sản, thịt và rau củ xào sốt sánh",Mì xào giòn; giòn; xào,
+c081_s2,mi-xao-gion,,test,,,short,Mì xào giòn,"ổ mì chiên vàng giòn, phủ hải sản, thịt và rau củ xào sốt sánh",Mì xào giòn; giòn; xào,
+c081_l1,mi-xao-gion,,val,,,long,Mì xào giòn,"ổ mì chiên vàng giòn, phủ hải sản, thịt và rau củ xào sốt sánh",Mì xào giòn; giòn; xào,
+c081_l2,mi-xao-gion,,test,,,long,Mì xào giòn,"ổ mì chiên vàng giòn, phủ hải sản, thịt và rau củ xào sốt sánh",Mì xào giòn; giòn; xào,
+c082_s1,muc-nhoi-thit,,test,,,short,Mực nhồi thịt,"con mực nguyên ống, ruột đầy thịt băm và miến, chiên hoặc hấp, cắt khoanh thấy nhân",Mực nhồi thịt; mực; nhồi,
+c082_s2,muc-nhoi-thit,,val,,,short,Mực nhồi thịt,"con mực nguyên ống, ruột đầy thịt băm và miến, chiên hoặc hấp, cắt khoanh thấy nhân",Mực nhồi thịt; mực; nhồi,
+c082_l1,muc-nhoi-thit,,val,,,long,Mực nhồi thịt,"con mực nguyên ống, ruột đầy thịt băm và miến, chiên hoặc hấp, cắt khoanh thấy nhân",Mực nhồi thịt; mực; nhồi,
+c082_l2,muc-nhoi-thit,,test,,,long,Mực nhồi thịt,"con mực nguyên ống, ruột đầy thịt băm và miến, chiên hoặc hấp, cắt khoanh thấy nhân",Mực nhồi thịt; mực; nhồi,
+c083_s1,nam-pia,,test,,,short,Nậm pịa,"món nước sệt màu xanh nâu đục, có lòng và nội tạng, rau thơm, thường nấu trong nồi lớn",Nậm pịa; nậm; pịa,
+c083_s2,nam-pia,,val,,,short,Nậm pịa,"món nước sệt màu xanh nâu đục, có lòng và nội tạng, rau thơm, thường nấu trong nồi lớn",Nậm pịa; nậm; pịa,
+c083_l1,nam-pia,,test,,,long,Nậm pịa,"món nước sệt màu xanh nâu đục, có lòng và nội tạng, rau thơm, thường nấu trong nồi lớn",Nậm pịa; nậm; pịa,
+c083_l2,nam-pia,,val,,,long,Nậm pịa,"món nước sệt màu xanh nâu đục, có lòng và nội tạng, rau thơm, thường nấu trong nồi lớn",Nậm pịa; nậm; pịa,
+c084_s1,nem-chua,,test,,,short,Nem chua,"miếng thịt màu hồng vuông hoặc dài, có tỏi ớt, gói lá xanh và bọc ni lông",Nem chua; chua; nem,
+c084_s2,nem-chua,,val,,,short,Nem chua,"miếng thịt màu hồng vuông hoặc dài, có tỏi ớt, gói lá xanh và bọc ni lông",Nem chua; chua; nem,
+c084_l1,nem-chua,,val,,,long,Nem chua,"miếng thịt màu hồng vuông hoặc dài, có tỏi ớt, gói lá xanh và bọc ni lông",Nem chua; chua; nem,
+c084_l2,nem-chua,,test,,,long,Nem chua,"miếng thịt màu hồng vuông hoặc dài, có tỏi ớt, gói lá xanh và bọc ni lông",Nem chua; chua; nem,
+c085_s1,nem-nuong-nha-trang,,val,,,short,Nem nướng Nha Trang,"xiên thịt viên dài nướng hồng nâu, ăn với ram giòn, rau sống, chuối chát và nước chấm màu cam",Nem nướng Nha Trang; nem; nha; nướng; trang; Nha Trang,cha-lui
+c085_s2,nem-nuong-nha-trang,,test,,,short,Nem nướng Nha Trang,"xiên thịt viên dài nướng hồng nâu, ăn với ram giòn, rau sống, chuối chát và nước chấm màu cam",Nem nướng Nha Trang; nem; nha; nướng; trang; Nha Trang,cha-lui
+c085_l1,nem-nuong-nha-trang,,test,,,long,Nem nướng Nha Trang,"xiên thịt viên dài nướng hồng nâu, ăn với ram giòn, rau sống, chuối chát và nước chấm màu cam",Nem nướng Nha Trang; nem; nha; nướng; trang; Nha Trang,cha-lui
+c085_l2,nem-nuong-nha-trang,,val,,,long,Nem nướng Nha Trang,"xiên thịt viên dài nướng hồng nâu, ăn với ram giòn, rau sống, chuối chát và nước chấm màu cam",Nem nướng Nha Trang; nem; nha; nướng; trang; Nha Trang,cha-lui
+c086_s1,nui-xao,,val,,,short,Nui xào,"nui ống ngắn xào với thịt bò hoặc hải sản, cà chua, hành tây và rau xanh",Nui xào; nui; xào,bo-luc-lac
+c086_s2,nui-xao,,test,,,short,Nui xào,"nui ống ngắn xào với thịt bò hoặc hải sản, cà chua, hành tây và rau xanh",Nui xào; nui; xào,bo-luc-lac
+c086_l1,nui-xao,,test,,,long,Nui xào,"nui ống ngắn xào với thịt bò hoặc hải sản, cà chua, hành tây và rau xanh",Nui xào; nui; xào,bo-luc-lac
+c086_l2,nui-xao,,val,,,long,Nui xào,"nui ống ngắn xào với thịt bò hoặc hải sản, cà chua, hành tây và rau xanh",Nui xào; nui; xào,bo-luc-lac
+c087_s1,oc-buou-hap,,val,,,short,Ốc bươu hấp sả,"ốc vỏ to tròn màu đen xanh hấp với sả và lá gừng, ăn với nước chấm",Ốc bươu hấp sả; bươu; hấp; sả; ốc,
+c087_s2,oc-buou-hap,,test,,,short,Ốc bươu hấp sả,"ốc vỏ to tròn màu đen xanh hấp với sả và lá gừng, ăn với nước chấm",Ốc bươu hấp sả; bươu; hấp; sả; ốc,
+c087_l1,oc-buou-hap,,test,,,long,Ốc bươu hấp sả,"ốc vỏ to tròn màu đen xanh hấp với sả và lá gừng, ăn với nước chấm",Ốc bươu hấp sả; bươu; hấp; sả; ốc,
+c087_l2,oc-buou-hap,,val,,,long,Ốc bươu hấp sả,"ốc vỏ to tròn màu đen xanh hấp với sả và lá gừng, ăn với nước chấm",Ốc bươu hấp sả; bươu; hấp; sả; ốc,
+c088_s1,oc-huong-xao,,val,,,short,Ốc hương xào,"ốc vỏ trắng kem đốm nâu xào bơ, trứng muối hoặc sả ớt, có rau răm",Ốc hương xào; hương; xào; ốc,oc-len-xao-dua
+c088_s2,oc-huong-xao,,test,,,short,Ốc hương xào,"ốc vỏ trắng kem đốm nâu xào bơ, trứng muối hoặc sả ớt, có rau răm",Ốc hương xào; hương; xào; ốc,oc-len-xao-dua
+c088_l1,oc-huong-xao,,test,,,long,Ốc hương xào,"ốc vỏ trắng kem đốm nâu xào bơ, trứng muối hoặc sả ớt, có rau răm",Ốc hương xào; hương; xào; ốc,oc-len-xao-dua
+c088_l2,oc-huong-xao,,val,,,long,Ốc hương xào,"ốc vỏ trắng kem đốm nâu xào bơ, trứng muối hoặc sả ớt, có rau răm",Ốc hương xào; hương; xào; ốc,oc-len-xao-dua
+c089_s1,oc-len-xao-dua,,val,,,short,Ốc len xào dừa,"ốc vỏ dài nhọn xoắn nấu trong nước cốt dừa sánh béo với sả, ớt và rau răm",Ốc len xào dừa; dừa; len; xào; ốc,oc-huong-xao
+c089_s2,oc-len-xao-dua,,test,,,short,Ốc len xào dừa,"ốc vỏ dài nhọn xoắn nấu trong nước cốt dừa sánh béo với sả, ớt và rau răm",Ốc len xào dừa; dừa; len; xào; ốc,oc-huong-xao
+c089_l1,oc-len-xao-dua,,test,,,long,Ốc len xào dừa,"ốc vỏ dài nhọn xoắn nấu trong nước cốt dừa sánh béo với sả, ớt và rau răm",Ốc len xào dừa; dừa; len; xào; ốc,oc-huong-xao
+c089_l2,oc-len-xao-dua,,val,,,long,Ốc len xào dừa,"ốc vỏ dài nhọn xoắn nấu trong nước cốt dừa sánh béo với sả, ớt và rau răm",Ốc len xào dừa; dừa; len; xào; ốc,oc-huong-xao
+c090_s1,pho,,test,,,short,Phở,"tô sợi dẹt trắng, nước dùng trong màu nâu nhạt, thịt bò hoặc gà thái mỏng, hành tây và hành lá",Phở; phở,"bun-bo-hue, hu-tieu"
+c090_s2,pho,,val,,,short,Phở,"tô sợi dẹt trắng, nước dùng trong màu nâu nhạt, thịt bò hoặc gà thái mỏng, hành tây và hành lá",Phở; phở,"bun-bo-hue, hu-tieu"
+c090_l1,pho,,test,,,long,Phở,"tô sợi dẹt trắng, nước dùng trong màu nâu nhạt, thịt bò hoặc gà thái mỏng, hành tây và hành lá",Phở; phở,"bun-bo-hue, hu-tieu"
+c090_l2,pho,,val,,,long,Phở,"tô sợi dẹt trắng, nước dùng trong màu nâu nhạt, thịt bò hoặc gà thái mỏng, hành tây và hành lá",Phở; phở,"bun-bo-hue, hu-tieu"
+c091_s1,rau-muong-xao,,val,,,short,Rau muống xào tỏi,đĩa rau thân dài rỗng và lá xanh bóng xào với tỏi,Rau muống xào tỏi; muống; rau; tỏi; xào,
+c091_s2,rau-muong-xao,,test,,,short,Rau muống xào tỏi,đĩa rau thân dài rỗng và lá xanh bóng xào với tỏi,Rau muống xào tỏi; muống; rau; tỏi; xào,
+c091_l1,rau-muong-xao,,val,,,long,Rau muống xào tỏi,đĩa rau thân dài rỗng và lá xanh bóng xào với tỏi,Rau muống xào tỏi; muống; rau; tỏi; xào,
+c091_l2,rau-muong-xao,,test,,,long,Rau muống xào tỏi,đĩa rau thân dài rỗng và lá xanh bóng xào với tỏi,Rau muống xào tỏi; muống; rau; tỏi; xào,
+c092_s1,sup-cua,,test,,,short,Súp cua,"súp sánh trong có sợi trứng, thịt cua xé, trứng cút, bắp, nấm, rắc ngò và tiêu",Súp cua; cua; súp,
+c092_s2,sup-cua,,val,,,short,Súp cua,"súp sánh trong có sợi trứng, thịt cua xé, trứng cút, bắp, nấm, rắc ngò và tiêu",Súp cua; cua; súp,
+c092_l1,sup-cua,,val,,,long,Súp cua,"súp sánh trong có sợi trứng, thịt cua xé, trứng cút, bắp, nấm, rắc ngò và tiêu",Súp cua; cua; súp,
+c092_l2,sup-cua,,test,,,long,Súp cua,"súp sánh trong có sợi trứng, thịt cua xé, trứng cút, bắp, nấm, rắc ngò và tiêu",Súp cua; cua; súp,
+c093_s1,tau-hu-nhoi-thit,,val,,,short,Đậu hũ nhồi thịt,"miếng đậu chiên vàng, giữa kẹp thịt băm, sốt cà chua đỏ, rắc hành lá",Đậu hũ nhồi thịt; hũ; nhồi; đậu; đậu hũ; tàu hũ,
+c093_s2,tau-hu-nhoi-thit,,test,,,short,Đậu hũ nhồi thịt,"miếng đậu chiên vàng, giữa kẹp thịt băm, sốt cà chua đỏ, rắc hành lá",Đậu hũ nhồi thịt; hũ; nhồi; đậu; đậu hũ; tàu hũ,
+c093_l1,tau-hu-nhoi-thit,,val,,,long,Đậu hũ nhồi thịt,"miếng đậu chiên vàng, giữa kẹp thịt băm, sốt cà chua đỏ, rắc hành lá",Đậu hũ nhồi thịt; hũ; nhồi; đậu; đậu hũ; tàu hũ,
+c093_l2,tau-hu-nhoi-thit,,test,,,long,Đậu hũ nhồi thịt,"miếng đậu chiên vàng, giữa kẹp thịt băm, sốt cà chua đỏ, rắc hành lá",Đậu hũ nhồi thịt; hũ; nhồi; đậu; đậu hũ; tàu hũ,
+c094_s1,tau-hu-non,,val,,,short,Tàu hũ nước đường,"những muỗng đậu non trắng mềm trong nước gừng ngọt màu nâu hoặc nước cốt dừa, có khi thêm trân châu",Tàu hũ nước đường; hũ; tàu; đường; tàu hũ; đậu hũ; tào phớ,
+c094_s2,tau-hu-non,,test,,,short,Tàu hũ nước đường,"những muỗng đậu non trắng mềm trong nước gừng ngọt màu nâu hoặc nước cốt dừa, có khi thêm trân châu",Tàu hũ nước đường; hũ; tàu; đường; tàu hũ; đậu hũ; tào phớ,
+c094_l1,tau-hu-non,,test,,,long,Tàu hũ nước đường,"những muỗng đậu non trắng mềm trong nước gừng ngọt màu nâu hoặc nước cốt dừa, có khi thêm trân châu",Tàu hũ nước đường; hũ; tàu; đường; tàu hũ; đậu hũ; tào phớ,
+c094_l2,tau-hu-non,,val,,,long,Tàu hũ nước đường,"những muỗng đậu non trắng mềm trong nước gừng ngọt màu nâu hoặc nước cốt dừa, có khi thêm trân châu",Tàu hũ nước đường; hũ; tàu; đường; tàu hũ; đậu hũ; tào phớ,
+c095_s1,thit-dong,,test,,,short,Thịt đông,"khối thạch trong hoặc nâu nhạt có miếng thịt, bì và mộc nhĩ, cắt miếng hoặc để trong bát",Thịt đông; đông,
+c095_s2,thit-dong,,val,,,short,Thịt đông,"khối thạch trong hoặc nâu nhạt có miếng thịt, bì và mộc nhĩ, cắt miếng hoặc để trong bát",Thịt đông; đông,
+c095_l1,thit-dong,,val,,,long,Thịt đông,"khối thạch trong hoặc nâu nhạt có miếng thịt, bì và mộc nhĩ, cắt miếng hoặc để trong bát",Thịt đông; đông,
+c095_l2,thit-dong,,test,,,long,Thịt đông,"khối thạch trong hoặc nâu nhạt có miếng thịt, bì và mộc nhĩ, cắt miếng hoặc để trong bát",Thịt đông; đông,
+c096_s1,thit-kho-tau,,val,,,short,Thịt kho trứng,miếng thịt ba chỉ và trứng luộc nguyên quả trong nước kho màu nâu hổ phách bóng,Thịt kho trứng; kho,
+c096_s2,thit-kho-tau,,test,,,short,Thịt kho trứng,miếng thịt ba chỉ và trứng luộc nguyên quả trong nước kho màu nâu hổ phách bóng,Thịt kho trứng; kho,
+c096_l1,thit-kho-tau,,val,,,long,Thịt kho trứng,miếng thịt ba chỉ và trứng luộc nguyên quả trong nước kho màu nâu hổ phách bóng,Thịt kho trứng; kho,
+c096_l2,thit-kho-tau,,test,,,long,Thịt kho trứng,miếng thịt ba chỉ và trứng luộc nguyên quả trong nước kho màu nâu hổ phách bóng,Thịt kho trứng; kho,
+c097_s1,thit-trau-gac-bep,,test,,,short,Thịt trâu gác bếp,"những thanh thịt khô dài màu nâu đỏ sẫm, treo trên bếp hoặc xé sợi bày đĩa",Thịt trâu gác bếp; bếp; gác; trâu,
+c097_s2,thit-trau-gac-bep,,val,,,short,Thịt trâu gác bếp,"những thanh thịt khô dài màu nâu đỏ sẫm, treo trên bếp hoặc xé sợi bày đĩa",Thịt trâu gác bếp; bếp; gác; trâu,
+c097_l1,thit-trau-gac-bep,,test,,,long,Thịt trâu gác bếp,"những thanh thịt khô dài màu nâu đỏ sẫm, treo trên bếp hoặc xé sợi bày đĩa",Thịt trâu gác bếp; bếp; gác; trâu,
+c097_l2,thit-trau-gac-bep,,val,,,long,Thịt trâu gác bếp,"những thanh thịt khô dài màu nâu đỏ sẫm, treo trên bếp hoặc xé sợi bày đĩa",Thịt trâu gác bếp; bếp; gác; trâu,
+c098_s1,tiet-canh,,val,,,short,Tiết canh,"đĩa máu đông đỏ tươi, rắc lòng băm, đậu phộng và rau thơm xanh",Tiết canh; tiết,
+c098_s2,tiet-canh,,test,,,short,Tiết canh,"đĩa máu đông đỏ tươi, rắc lòng băm, đậu phộng và rau thơm xanh",Tiết canh; tiết,
+c098_l1,tiet-canh,,val,,,long,Tiết canh,"đĩa máu đông đỏ tươi, rắc lòng băm, đậu phộng và rau thơm xanh",Tiết canh; tiết,
+c098_l2,tiet-canh,,test,,,long,Tiết canh,"đĩa máu đông đỏ tươi, rắc lòng băm, đậu phộng và rau thơm xanh",Tiết canh; tiết,
+c099_s1,trung-vit-lon,,val,,,short,Trứng vịt lộn,"quả trứng luộc đặt trong chén nhỏ, gõ vỡ đầu thấy phôi bên trong, ăn với rau răm, muối tiêu, gừng",Trứng vịt lộn; lộn; vịt; hột vịt lộn,
+c099_s2,trung-vit-lon,,test,,,short,Trứng vịt lộn,"quả trứng luộc đặt trong chén nhỏ, gõ vỡ đầu thấy phôi bên trong, ăn với rau răm, muối tiêu, gừng",Trứng vịt lộn; lộn; vịt; hột vịt lộn,
+c099_l1,trung-vit-lon,,val,,,long,Trứng vịt lộn,"quả trứng luộc đặt trong chén nhỏ, gõ vỡ đầu thấy phôi bên trong, ăn với rau răm, muối tiêu, gừng",Trứng vịt lộn; lộn; vịt; hột vịt lộn,
+c099_l2,trung-vit-lon,,test,,,long,Trứng vịt lộn,"quả trứng luộc đặt trong chén nhỏ, gõ vỡ đầu thấy phôi bên trong, ăn với rau răm, muối tiêu, gừng",Trứng vịt lộn; lộn; vịt; hột vịt lộn,
+c100_s1,xoi-gac,,val,,,short,Xôi gấc,"xôi màu đỏ cam bóng, thường đóng khuôn hình hoa, có khi rắc dừa nạo trắng",Xôi gấc; gấc,xoi-xeo
+c100_s2,xoi-gac,,test,,,short,Xôi gấc,"xôi màu đỏ cam bóng, thường đóng khuôn hình hoa, có khi rắc dừa nạo trắng",Xôi gấc; gấc,xoi-xeo
+c100_l1,xoi-gac,,test,,,long,Xôi gấc,"xôi màu đỏ cam bóng, thường đóng khuôn hình hoa, có khi rắc dừa nạo trắng",Xôi gấc; gấc,xoi-xeo
+c100_l2,xoi-gac,,val,,,long,Xôi gấc,"xôi màu đỏ cam bóng, thường đóng khuôn hình hoa, có khi rắc dừa nạo trắng",Xôi gấc; gấc,xoi-xeo
+c101_s1,xoi-nep-than,,test,,,short,Xôi nếp than,"xôi màu tím đen, rắc dừa nạo, mè hoặc đậu xanh",Xôi nếp than; nếp; than,
+c101_s2,xoi-nep-than,,val,,,short,Xôi nếp than,"xôi màu tím đen, rắc dừa nạo, mè hoặc đậu xanh",Xôi nếp than; nếp; than,
+c101_l1,xoi-nep-than,,val,,,long,Xôi nếp than,"xôi màu tím đen, rắc dừa nạo, mè hoặc đậu xanh",Xôi nếp than; nếp; than,
+c101_l2,xoi-nep-than,,test,,,long,Xôi nếp than,"xôi màu tím đen, rắc dừa nạo, mè hoặc đậu xanh",Xôi nếp than; nếp; than,
+c102_s1,xoi-xeo,,val,,,short,Xôi xéo,"xôi vàng phủ đậu xanh thái mỏng như lụa và hành phi giòn, gói lá hoặc giấy",Xôi xéo; xéo,xoi-gac
+c102_s2,xoi-xeo,,test,,,short,Xôi xéo,"xôi vàng phủ đậu xanh thái mỏng như lụa và hành phi giòn, gói lá hoặc giấy",Xôi xéo; xéo,xoi-gac
+c102_l1,xoi-xeo,,test,,,long,Xôi xéo,"xôi vàng phủ đậu xanh thái mỏng như lụa và hành phi giòn, gói lá hoặc giấy",Xôi xéo; xéo,xoi-gac
+c102_l2,xoi-xeo,,val,,,long,Xôi xéo,"xôi vàng phủ đậu xanh thái mỏng như lụa và hành phi giòn, gói lá hoặc giấy",Xôi xéo; xéo,xoi-gac

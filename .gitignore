@@ -1,0 +1,8 @@
+# generated binaries
+captions/captions_sheet.xlsx
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
