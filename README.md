@@ -5,15 +5,25 @@ Data preparation for a Vietnamese dish classification / text-to-image search pro
 The task description is in [`docs/N1.md`](docs/N1.md).
 
 This repo (`VNDishClassification-src`) holds the **code**. Data and the summary report live in the separate repo
-**`VNDishClassification-data`**, checked out next to this one:
+**`VNDishClassification-data`**, hosted on Hugging Face as the dataset [`VimHater/VNfood103processed`](https://huggingface.co/datasets/VimHater/VNfood103processed)
+and checked out next to this one:
 
 ```
 VNDishClassification/
 ├── VNDishClassification-src/    code (this repo)
-└── VNDishClassification-data/   data/ (raw + processed, not in git) and report/
+└── VNDishClassification-data/   data/ and report/ (Hugging Face dataset)
 ```
 
-Scripts find it at `../VNDishClassification-data`; set `VNFOOD_DATA=/path/to/VNDishClassification-data` to use another location.
+Get the processed data (≈ 11 GB: cleaned images, splits, `classes.json`, features) from the parent folder:
+
+```bash
+pip install -U huggingface_hub
+hf download VimHater/VNfood103processed --repo-type dataset --local-dir VNDishClassification-data
+```
+
+The raw Kaggle dataset is not re-hosted; download it into `VNDishClassification-data/data/raw/` only if you need to
+rerun `pipeline/prep.py`. Scripts find the data at `../VNDishClassification-data`; set
+`VNFOOD_DATA=/path/to/VNDishClassification-data` to use another location.
 
 ## Layout
 
@@ -55,10 +65,11 @@ Full numbers: `report/DATA_SUMMARY.md` in `VNDishClassification-data`.
 
 - [x] cleaned images, dedup, split, features, `classes.json` (draft, needs native review)
 - [x] 412 captions drafted by a model (`author = claude-opus-5-5`); team replaces them in the Google Sheet
-- [ ] publish datasets `vnfood103-clean`, `vnfood-prep`, `vnfood-captions`
+- [x] publish `vnfood103-clean` + `vnfood-prep` on Hugging Face ([`VimHater/VNfood103processed`](https://huggingface.co/datasets/VimHater/VNfood103processed))
+- [ ] publish `vnfood-captions`
 - [ ] Kaggle notebook `vndish-classification`: re-attach the input dataset and run
 
 ## License
 
 Code: [MIT](LICENSE). Data: not included in this repository; the images and everything derived from them are
-CC BY-NC-SA 4.0 (non-commercial, share-alike) — see `data/DISCLAIMER.md` in `VNDishClassification-data`.
+CC BY-NC-SA 4.0 (non-commercial, share-alike) — see `data/DISCLAIMER.md` in [`VimHater/VNfood103processed`](https://huggingface.co/datasets/VimHater/VNfood103processed).

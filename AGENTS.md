@@ -12,7 +12,9 @@ Guidance for coding agents working in this repository. Read `README.md` for the 
   from it with `python pipeline/build_notebook.py`; never edit the notebook by hand.
 - `prep.py` uses `multiprocessing` with the `fork` context (Linux / Kaggle). `features.py` is spawn-safe and also runs on Windows.
 - Scripts are deterministic (seed 42). Rerunning `prep.py` overwrites the data repo's `data/processed/`; it takes ~4 minutes.
-- The data folder is large (≈ 25 GB) and not tracked in git. Do not move, delete or re-download it without asking.
+- The data folder is large (≈ 25 GB locally). `data/processed/` is published on Hugging Face as
+  `VimHater/VNfood103processed` (upload with `hf upload`, not git push); `data/raw/` is never uploaded.
+  Do not move, delete, re-download or re-upload it without asking.
 - Python deps: `pillow`, `numpy` everywhere; `scikit-image`, `torch`, `open_clip_torch` for `features.py`; `openpyxl` for
   `captions/build_caption_sheet.py` (not installed system-wide on this machine; use a throwaway venv).
 
